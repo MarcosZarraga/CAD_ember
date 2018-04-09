@@ -7,6 +7,15 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('pagos');
+  this.route('gastos');
+  this.route('colonos');
+  this.route('calendario');
+  this.route('encuestas');
+  this.route('solicitudes');
+  this.route('alertas');
+  this.route('servicios');
+  this.route('login');
 });
 
 export default Router;

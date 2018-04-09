@@ -1,0 +1,181 @@
+{{outlet}}
+<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>GUHA</title>
+	<!-- end: Meta -->
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- end: Mobile Specific -->
+
+	<!-- start: CSS -->
+	<link id="bootstrap-style" href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link id="base-style" href="css/style.css" rel="stylesheet">
+	<link id="base-style-responsive" href="css/style-responsive.css" rel="stylesheet">
+	<!-- end: CSS -->
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- start: Favicon -->
+	<link rel="shortcut icon" href="img/1.png">
+	<!-- end: Favicon -->
+		
+
+		<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html"> <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
+								
+				<!-- start: Header Menu -->
+				<div class="btn-group pull-right" >
+					<a class="btn" href="alertas.html">
+						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
+					</a>
+					<a class="btn" href="encuestas.html">
+						<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">4</span>
+					</a>
+					<a class="btn" href="reportes.html">
+						<i class="icon-envelope"></i><span class="hidden-phone hidden-tablet"> Solicitudes</span> <span class="label label-success hidden-phone">2</span>
+					</a>
+					<!-- start: User Dropdown -->
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-user"></i><span class="hidden-phone hidden-tablet"> Perfil</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Ajustes</a></li>
+						<li class="divider"></li>
+						<li><a href="login.html">Cerrar Sesión</a></li>
+					</ul>
+					<!-- end: User Dropdown -->
+				</div>
+				<!-- end: Header Menu -->
+				
+			</div>
+		</div>
+	</div>
+
+	
+		<div class="container-fluid">
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+		<!-- start: Main Menu -->
+			<div class="span2 main-menu-span">
+				<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li class="nav-header hidden-tablet">Menú principal</li>
+						<li><a href="index.html"><i class="icon-home"></i><span class="hidden-tablet">Resumen</span></a></li>
+						<li><a href="pagos.html"><i class=" icon-plus"></i><span class="hidden-tablet"> Pagos</span></a></li>
+						<li><a href="gastos.html"><i class=" icon-minus"></i><span class="hidden-tablet"> Gastos</span></a></li>
+						<li><a href="colonos.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Colonos</span></a></li>
+						<li><a href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendario</span></a></li>
+						<li><a href="encuestas.html"><i class="icon-check"></i><span class="hidden-tablet"> Encuestas</span></a></li>
+						<li><a href="reportes.html"><i class="icon-question-sign"></i><span class="hidden-tablet"> Solicitudes</span></a></li>
+						<li><a href="alertas.html"><i class="icon-exclamation-sign"></i><span class="hidden-tablet"> Alertas</span></a></li>
+						<li><a href="servicios.html"><i class="icon-user"></i><span class="hidden-tablet">Servicios</span></a></li>
+					</ul>
+				</div><!--/.well -->
+			</div><!--/span-->
+			<!-- end: Main Menu -->
+
+			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			<div class="row-fluid sortable">	
+				<div class="box span10">
+					<div class="box-header">
+						<h2><i class="icon-exclamation-sign"></i><span class="break"></span>Registro de Alertas</h2>
+					
+					</div>
+					<div class="box-content ">
+						<table class="table table-bordered table-striped table-condensed">
+							  <thead>
+								  <tr>
+									  <th>Colono que envio la alerta</th>
+									  <th>Fecha de registro de la alerta</th>
+									  <th>Motivo</th>
+									  <th>Comentarios</th>
+									                                        
+								  </tr>
+							  </thead>   
+							  <tbody>
+								<tr>
+									<td>Marcos Zárraga</td>
+									<td class="center">2012/01/01</td>
+									<td class="center">Actividad Sospechosa</td>
+									<td>En la casa 101 registre actividad inusual</td>
+								
+								                                       
+								</tr>
+								<tr>
+									<td>Marcos Zárraga</td>
+									<td class="center">2012/02/01</td>
+									<td class="center">Robo</td>
+									<td>Pude observar a personas robando en la casa 301</td>
+									                                      
+								</tr>
+								<tr>
+									<td>Marcos Zárraga</td>
+									<td class="center">2012/02/01</td>
+									<td class="center">Fuga de agua</td>
+									<td>Existe una fuga de agua en la calle 4</td>
+									                                      
+								</tr>
+								<tr>
+									<td>Marcos Zárraga</td>
+									<td class="center">2012/03/01</td>
+									<td class="center">Fuga de gas</td>
+									<td>Me percate de olor a gas en la calle 106</td>
+									                                       
+								</tr>
+								<tr>
+									<td>Marcos Zárraga</td>
+									<td class="center">2012/01/21</td>
+									<td class="center">Persona Desconocida</td>
+									<td>Vi a una persona desconocida rondando por la calle 7</td>
+									                                        
+								</tr>                                   
+							  </tbody>
+						 </table>  
+						 <div class="pagination pagination-centered">
+						  <ul>
+							<li><a href="#">Prev</a></li>
+							<li class="active">
+							  <a href="#">1</a>
+							</li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">Next</a></li>
+						  </ul>
+						</div>     
+					</div>
+				</div><!--/span-->
+			</div><!--/row-->
+    
+					<!-- end: Content -->
+			</div><!--/#content.span10-->
+				</div><!--/fluid-row-->
+				
+
+		
+		<div class="clearfix"></div>
+			
+			
+
+	<!-- start: JavaScript-->
