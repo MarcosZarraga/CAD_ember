@@ -36,19 +36,26 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</a>		<a class="brand" href="index.html"> <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
+				</a>		<a class="brand" > <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
 								
 				<!-- start: Header Menu -->
-			<div class="btn-group pull-right" >
+			<div class="btn-group pull-right" >	
+				{{#link-to "alertas"}}
+				
 					<a class="btn" href="alertas.html">
 						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
 					</a>
-					<a class="btn" href="encuestas.html">
+					{{/link-to}}
+					{{#link-to "encuestas"}}
+					<a class="btn">
 						<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">4</span>
 					</a>
-					<a class="btn" href="reportes.html">
+					{{/link-to}}
+					{{#link-to "solicitudes"}}
+					<a class="btn">
 						<i class="icon-envelope"></i><span class="hidden-phone hidden-tablet"> Solicitudes</span> <span class="label label-success hidden-phone">2</span>
 					</a>
+					{{/link-to}}
 					<!-- start: User Dropdown -->
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 						<i class="icon-user"></i><span class="hidden-phone hidden-tablet"> Perfil</span>
@@ -61,36 +68,43 @@
 					</ul>
 					<!-- end: User Dropdown -->
 				</div>
-					<!-- end: User Dropdown -->
-				</div>
 				<!-- end: Header Menu -->
 				
 			</div>
 		</div>
+	</div>
 
-	<div id="under-header"></div>
-	<!-- start: Header -->
 	
 		<div class="container-fluid">
 		<div class="row-fluid">
 				
+			<!-- start: Main Menu -->
 		<!-- start: Main Menu -->
-		<div class="span2 main-menu-span">
+			<div class="span2 main-menu-span">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Menú principal</li>
-						<li><a href="index.html"><i class="icon-home"></i><span class="hidden-tablet">Resumen</span></a></li>
-						<li><a href="pagos.html"><i class=" icon-plus"></i><span class="hidden-tablet"> Pagos</span></a></li>
-						<li><a href="gastos.html"><i class=" icon-minus"></i><span class="hidden-tablet"> Gastos</span></a></li>
-						<li><a href="colonos.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Colonos</span></a></li>
-						<li><a href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendario</span></a></li>
-						<li><a href="encuestas.html"><i class="icon-check"></i><span class="hidden-tablet"> Encuestas</span></a></li>
-						<li><a href="reportes.html"><i class="icon-question-sign"></i><span class="hidden-tablet"> Solicitudes</span></a></li>
-						<li><a href="alertas.html"><i class="icon-exclamation-sign"></i><span class="hidden-tablet"> Alertas</span></a></li>
-						<li><a href="servicios.html"><i class="icon-user"></i><span class="hidden-tablet">Servicios</span></a></li>
+						<li>{{#link-to "index"}}<i class="icon-home"></i><span class="hidden-tablet">Resumen</span>{{/link-to}}</li>
+
+						<li>{{#link-to "pagos"}}<i class=" icon-plus"></i><span class="hidden-tablet"> Pagos</span>{{/link-to}}</li>
+
+						<li>{{#link-to "gastos"}}<i class=" icon-minus"></i><span class="hidden-tablet"> Gastos</span>{{/link-to}}</li>
+
+						<li>{{#link-to "colonos"}}<i class="icon-align-justify"></i><span class="hidden-tablet"> Colonos</span>{{/link-to}}</li>
+
+						<li>{{#link-to "calendario"}}<i class="icon-calendar"></i><span class="hidden-tablet"> Calendario</span>{{/link-to}}</li>
+
+						<li>{{#link-to "encuestas"}}<i class="icon-check"></i><span class="hidden-tablet"> Encuestas</span>{{/link-to}}</li>
+
+						<li>{{#link-to "solicitudes"}}<i class="icon-question-sign"></i><span class="hidden-tablet"> Solicitudes</span>{{/link-to}}</li>
+
+						<li>{{#link-to "alertas"}}<i class="icon-exclamation-sign"></i><span class="hidden-tablet"> Alertas</span>{{/link-to}}</li>
+
+						<li>{{#link-to "servicios"}}<i class="icon-user"></i><span class="hidden-tablet">Servicios</span>{{/link-to}}</li>
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
+			<!-- end: Main Menu -->
 			<!-- end: Main Menu -->
 			<!-- end: Main Menu -->
 			<noscript>
