@@ -104,7 +104,6 @@
 				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- end: Main Menu -->
-
 			
 			<noscript>
 				<div class="alert alert-block span10">
@@ -115,158 +114,84 @@
 			
 					<div class="row-fluid sortable">		
 				<div class="box span10">
-					<div class="box-header" data-original-title>
+					<div class="box-header" >
 						<h2><i class="icon-user"></i><span class="break"></span>Colonos</h2>
 						<div class="box-icon">
+							{{input type="checkbox" name="newColono" checked=newColono}}
 							<a href="#" class="btn-setting"><i class="icon-plus-sign"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
 							<!--a href="#" class="btn-close"><i class="icon-add"></i></a-->
 						</div>
 					</div>
-					<div class="box-content">
+
+					
+						    
+			
+							{{#if addNewColono}}
+						{{agregar-colono nuevoColono=newColono addColono=(action 'addColono')}}
+					{{else}}
+			<div class="box-content"> </div>
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								  <th>Nombre del colono</th>
-								  <th>Fecha de Registro</th>
-								  <th>Dirección</th>
-								  <th>Telefono</th>
-								  <th>Correo</th>
-								  <th>Status</th>
-								  <th>Acciones</th>
-							  </tr>
-						  </thead>   
-						  <tbody>
-							<tr>
-								<td>Anton Phunihel</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Calle 3 número 300</td>
-								<td>7719228202</td>
-								<td>ejemplo@gmail.com</td>
-								<td class="center">
-									<span class="label label-important">Atrasado</span>
-								</td>
-
-								<td class="center">
+							  <thead>
+								  <tr>
+									  <th>Nombre del colono</th>
+									  <th>Apellido Paterno</th>
+									  <th>Apellido Materno</th>
+									 <th>Dirección</th>
+								 	 <th>Telefono</th>
+									  <th>Correo</th>
+									  <th>Status</th>
+									  <th>Acciones</th>                                          
+								  </tr>
+							  </thead>   
+						 <tbody>
+								{{#each allColonos as |colono|}}
+									{{#if colono.nombre}}
+										<tr>
+											<td class="center">
+												{{colono.nombre}}
+											</td>
+											<td class="center">
+												{{colono.apellidoPaterno}}
+											</td>
+											<td class="center">
+												{{colono.apellidoMaterno}}
+											</td>
 									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Alphonse Ivo</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Calle 3 número 301</td>	
-								<td>7719228202</td>
-								<td>ejemplo@gmail.com</td>
-								<td class="center">
-									<span class="label label-success">Pagado</span>
-								</td>
-							
-								<td class="center">
-									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Thancmar Theophanes</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Calle 4 numero 402</td>
-								<td>7719228202</td>
-								<td>ejemplo@gmail.com</td>
-								<td class="center">
-									<span class="label label-success">Pagado</span>
-								</td>
-								
-								<td class="center">
-								
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-							
-								
-							</tr>
-					
 						
-					
-							<tr>
-								<td>Hristofor Sergio</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Calle 4 número 401</td>
-								<td>7719228202</td>
-								<td>ejemplo@gmail.com</td>
-								<td class="center">
-									<span class="label label-warning">En limite</span>
-								</td>
-								
-								<td class="center">
+											<td class="center">
+												{{colono.direccion}}
+											</td>  
+											<td class="center">
+												{{colono.telefono}}
+											</td> 
+											<td class="center">
+												{{colono.email}}
+											</td> 
+											<td class="center">
+												<span class="label label-important">{{colono.status}}</span>
+											</td> 
+											<td class="center">
 									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-
-							</tr>
-							
-							
-							
-							
-							
-						  </tbody>
-					  </table> 
-
+												<a class="btn btn-info" href="#">
+													<i class="icon-edit icon-white"></i>  
+												</a>
+												<a class="btn btn-danger" href="#">
+													<i class="icon-trash icon-white"></i> 
+												</a>
+											</td>                                     
+										</tr>	
+									{{/if}}     									
+								{{/each}} 
+							</tbody>
+					    </table> 
+					    {{/if}}
+				</div>
 					</div>
 				</div><!--/span-->
 			
 			</div><!--/row-->
-		</div>	
-		</div>	
-		<div class="modal hide fade" id="myModal">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Añadir Colono</h3>
-			</div>
-			<div class="modal-body">
-
-				<p class=" ">Nombre de Colono</p>
-				<input type="text" name="ncolono" class=" ">
-
-				<p class="">Fecha de registro</p>
-				<input type="date" name="fcolono" class=" ">
-
-				<p class=" ">Dirección</p>
-				<input type="text" name="dcolono" class=" ">
-					<p class=" ">Telefono</p>
-				<input type="text" name="tcolono" class=" ">
-					<p class=" ">Correo</p>
-				<input type="text" name="ecolono" class=" ">
-
-			
-
-			</div>
-			<div class="modal-footer">
-				<a href="colonos.html" class="btn" data-dismiss="modal">Cancelar</a>
-				<a href="colonos.html" class="btn btn-primary">Guardar Colono</a>
-			</div>
-		</div>
+		
 		
 		<div class="clearfix"></div>
 			
-			
-

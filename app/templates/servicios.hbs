@@ -117,10 +117,16 @@
 					<div class="box-header">
 						<h2><i class="icon-user"></i><span class="break"></span>Catálogo de Servicios</h2>
 						<div class="box-icon">
+							{{input type="checkbox" name="newServicio" checked=newServicio}}
 							<a href="#" class="btn-setting"><i class="icon-plus-sign"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
+					{{#if addNewServicio}}
+						{{agregar-servicio nuevoServicio=newServicio addServicio=(action 'addServicio')}}
+					{{else}}
+
+
 					<div class="box-content ">
 						<table class="table table-bordered table-striped table-condensed">
 							  <thead>
@@ -133,42 +139,32 @@
 								  </tr>
 							  </thead>   
 							  <tbody>
-								<tr>
-									<td>Marcos Zárraga Flores</td>
-									<td>Jardinero</td>
-									<td class="center">77112345678</td>
-									<td class="center">$1000.00 MXN</td>
-								
-								                                       
-								</tr>
-								<tr>
-									<td>Marcos Zárraga Flores</td>
-									<td>Seguridad privada</td>
-									<td class="center">77112345678</td>
-									<td class="center">$1000.00 MXN</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Marcos Zárraga Flores</td>
-									<td>Instalación de focos</td>
-									<td class="center">77112345678</td>
-									<td class="center">$1000.00 MXN</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Marcos Zárraga Flores</td>
-									<td>Mantenimiento Alberca</td>
-									<td class="center">77112345678</td>
-									<td class="center">$1000.00 MXN</td>
-									                                       
-								</tr>
-								<tr>
-									<td>Marcos Zárraga Flores</td>
-									<td>Reparación de calles</td>
-									<td class="center">77112345678</td>
-									<td class="center">$1000.00 MXN</td>
-									                                        
-								</tr>                                   
+								{{#each allServicios as |servicio|}}
+									{{#if servicio.costo}}
+										<tr>
+											<td class="center">
+												{{servicio.nombre}}
+											</td>
+											<td class="center">
+												{{servicio.referencia}}
+											</td>
+											<td class="center">
+												{{servicio.telefono}}
+											</td>
+											<td class="center">
+												{{servicio.costo}}
+											</td>                                        
+										</tr>	
+									{{!-- {{else}} --}}
+										{{!-- <tr>
+											<td>Sin pagos registrados</td>
+											<td class="center"></td>
+											<td class="center"></td>
+											<td class="center"></td>                       
+										</tr> --}}
+								{{/if}}     									
+								{{/each}} 
+								                                             
 							  </tbody>
 						 </table>  
 						 <div class="pagination pagination-centered">
@@ -184,6 +180,7 @@
 						  </ul>
 						</div>     
 					</div>
+					{{/if}}
 				</div><!--/span-->
 			</div><!--/row-->
     
@@ -191,28 +188,7 @@
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
 				
-		<div class="modal hide fade" id="myModal">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Añadir Servicio</h3>
-			</div>
-			<div class="modal-body">
-			
-					<h1 class="box span4">Nombre</h1>
-					<input type="text" name="snombre" class=" span5">
-					<h1 class="box span4">Referencia</h1>
-					<input type="text	" name="sreferencia" class="box span5">
-					<h1 class="box span4">Telefono</h1>
-					<input type="text" name="stelefono" class="box span5">
-					<h1 class="box span4">Costo</h1>
-					<input type="text" name="scosto" class="box span5">
-							
-			</div>
-			<div class="modal-footer">
-				<a href="servicios.html" class="btn" data-dismiss="modal">Cancelar</a>
-				<a href="servicios.html" class="btn btn-primary">Añadir Servicio</a>
-			</div>
-		</div>
+		
 		
 		<div class="clearfix"></div>
 			
