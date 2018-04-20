@@ -3,8 +3,9 @@ import { inject as service } from "@ember/service";
 import { isBlank } from '@ember/utils';
 import { isNone } from '@ember/utils';
 import { computed } from '@ember/object';
+import FindQuery from 'ember-emberfire-find-query/mixins/find-query';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(FindQuery, {
 	session: service(),
 	firebase: service('firebaseApp'),
 
@@ -36,54 +37,71 @@ export default Ember.Controller.extend({
 				email: email,
 				password: password
 			}).then((user)=>{
-				user.set('unidad', this.get('selectedUnit.id'))
 				let userId;
 				let userInst;
 				this.get('session').fetch().then(()=>{
 					userId =  this.get('session.currentUser.uid');
-					return this.get('store').query('administrator', {
-						equalTo: userId,
-						orderBy: uid, 
-						limitToLast: 1
+					console.log(userId)
+
+					let context = this;
+					return new Promise(function (resolve, reject){
+						context.filterEqual(context.store, 'administrator', { 'uid': userId}, function(admin){
+						console.log(admin)
+							return resolve(admin[0])
+						})
 					}).then((user)=>{
-						userInst = user.get('firstObject');
+						user.set('unidad', this.get('selectedUnit.id'));
+						user.save();
 						//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-						this.transitionToRoute('index');
+						this.transitionToRoute('inicio');
 					})
 				}).catch(()=>{
 					userId =  this.get('session.currentUser.uid');
-					return this.get('store').query('administrator', {
-						equalTo: userId,
-						orderBy: uid, 
-						limitToLast: 1
+					console.log(userId)
+
+					let context = this;
+					return new Promise(function (resolve, reject){
+						context.filterEqual(context.store, 'administrator', { 'uid': userId}, function(admin){
+						console.log(admin)
+						return resolve(admin[0])
+
+						})
 					}).then((user)=>{
-						userInst = user.get('firstObject');
+						user.set('unidad', this.get('selectedUnit.id'));
+						user.save();
 						//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-						this.transitionToRoute('index');
+						this.transitionToRoute('inicio');
 					})
-				}).catch(()=>{
 				})
 			}).catch((error)=>{
 				console.log(error);
 			})
 		},
 
-		crearXUser() {
-			let email = "alex_u1@guha.mx";
+		createXUser() {
+			let email = "alex_unit7@guha.mx";
 			let password = "123123";
-			this.get('firebase').auth().createUserWithEmailAndPassword(email, password).then((user)=>{
+			this.get('firebase').auth().createUserWithEmailAndPassword(email, password).then((user) => {
+				//	console.log(user.uid)
+				//debugger	
 				this.get('store').createRecord('administrator', {
 					nombre: 'Alex',
 					apellidoPaterno: 'M.',
-					apellidomaterno: 'L.',
+					apellidoMaterno: 'L.',
 					email: email,
-					uid: user.id,
+					uid: user.uid,
 				}).save();
-			}),then(()=>{
+			}).then(()=>{
 				//toastr.success('Registro exitoso');
+				console.log('Usuario registrado')
 			}).catch((error)=>{
 				console.log(error);
 			})
+		},
+
+		signOut(){
+			this.get('session').close();
+			console.log('Sesion cerrada');
 		}
 	}
 });

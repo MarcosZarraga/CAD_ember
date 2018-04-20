@@ -16,6 +16,7 @@ Router.map(function() {
   this.route('alertas');
   this.route('servicios');
   this.route('login');
+  this.route('inicio');
 });
 
 export default Router;

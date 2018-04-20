@@ -1,0 +1,282 @@
+{{outlet}}
+<!DOCTYPE html>
+
+	
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>GUHA</title>
+	<!-- end: Meta -->
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- end: Mobile Specific -->
+
+	<!-- start: CSS -->
+	<link id="bootstrap-style" href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link id="base-style" href="css/style.css" rel="stylesheet">
+	<link id="base-style-responsive" href="css/style-responsive.css" rel="stylesheet">
+	<!-- end: CSS -->
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- start: Favicon -->
+	<link rel="shortcut icon" href="img/1.png">
+	<!-- end: Favicon -->
+		
+
+		<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" > <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
+								
+				<!-- start: Header Menu -->
+				<div class="btn-group pull-right" >	
+				{{#link-to "alertas"}}
+				
+					<a class="btn" href="alertas.html">
+						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
+					</a>
+					{{/link-to}}
+					{{#link-to "encuestas"}}
+					<a class="btn">
+						<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">4</span>
+					</a>
+					{{/link-to}}
+					{{#link-to "solicitudes"}}
+					<a class="btn">
+						<i class="icon-envelope"></i><span class="hidden-phone hidden-tablet"> Solicitudes</span> <span class="label label-success hidden-phone">2</span>
+					</a>
+					{{/link-to}}
+					<!-- start: User Dropdown -->
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-user"></i><span class="hidden-phone hidden-tablet"> Perfil</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Ajustes</a></li>
+						<li class="divider"></li>
+						<li><a href="login.html">Cerrar Sesión</a></li>
+					</ul>
+					<!-- end: User Dropdown -->
+				</div>
+				<!-- end: Header Menu -->
+				
+			</div>
+		</div>
+	</div>
+
+	
+		<div class="container-fluid">
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+		<!-- start: Main Menu -->
+			<div class="span2 main-menu-span">
+				<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li class="nav-header hidden-tablet">Menú principal</li>
+						<li>{{#link-to "index"}}<i class="icon-home"></i><span class="hidden-tablet">Resumen</span>{{/link-to}}</li>
+
+						<li>{{#link-to "pagos"}}<i class=" icon-plus"></i><span class="hidden-tablet"> Pagos</span>{{/link-to}}</li>
+
+						<li>{{#link-to "gastos"}}<i class=" icon-minus"></i><span class="hidden-tablet"> Gastos</span>{{/link-to}}</li>
+
+						<li>{{#link-to "colonos"}}<i class="icon-align-justify"></i><span class="hidden-tablet"> Colonos</span>{{/link-to}}</li>
+
+						<li>{{#link-to "calendario"}}<i class="icon-calendar"></i><span class="hidden-tablet"> Calendario</span>{{/link-to}}</li>
+
+						<li>{{#link-to "encuestas"}}<i class="icon-check"></i><span class="hidden-tablet"> Encuestas</span>{{/link-to}}</li>
+
+						<li>{{#link-to "solicitudes"}}<i class="icon-question-sign"></i><span class="hidden-tablet"> Solicitudes</span>{{/link-to}}</li>
+
+						<li>{{#link-to "alertas"}}<i class="icon-exclamation-sign"></i><span class="hidden-tablet"> Alertas</span>{{/link-to}}</li>
+
+						<li>{{#link-to "servicios"}}<i class="icon-user"></i><span class="hidden-tablet">Servicios</span>{{/link-to}}</li>
+					</ul>
+				</div><!--/.well -->
+			</div><!--/span-->
+			<!-- end: Main Menu -->
+
+			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			
+			<div id="content" class="span10">
+			<!-- start: Content -->
+			
+			<div>
+				<ul class="breadcrumb">
+				
+					<li>
+						<a href="#">Estadísticas Totales/Estadísticas Mayo</a>
+					</li>
+				</ul>
+			</div>
+			<div class="sortable row-fluid">
+				
+					
+					
+				<div class="box-small span2">
+					<a data-rel="tooltip" title="15 Habitanes de pago pendiente." class="box-small-link" href="#">
+						<div >15</div>
+					</a>
+					<div class="box-small-title">Pagos Pendietes</div>
+					<!--span " class="notification red">+15%</span-->
+				</div>
+				
+				<div class="box-small span2">
+					<a data-rel="tooltip" title="$29.875 Ingreso de Marzo." class="box-small-link" href="#">
+						<div >$519.879</div>
+					</a>
+					<div class="box-small-title">Ingreso Total</div>
+					<!--span  class="notification green">+ $29.875</span-->
+				</div>
+				
+				<div class="box-small span2">
+					<a data-rel="tooltip" title="1,296 gastos de Marzo." class="box-small-link" href="#">
+						<div >$11,976</div>
+					</a>
+					<div class="box-small-title">Gastos Totales</div>
+					<!--span  class="notification yellow">+ 1,296</span-->
+				</div>
+					<div class="box-small span2">
+					<a data-rel="tooltip" title="10 Encuestas Respondidas." class="box-small-link" href="#">
+						<div >10</div>
+					</a>
+					<div class="box-small-title">Encuestas Respondidas</div>
+					<!--span  class="notification green">+ $29.875</span-->
+				</div>
+			
+				<div class="box-small span2">
+					<a data-rel="tooltip" title="3 Nuevas Alertas" class="box-small-link" href="#">
+						<div >3</div>
+					</a>
+					<div class="box-small-title">Alertas</div>
+					<!--span  class="notification green">+ $29.875</span-->
+				</div>
+			</div>
+			
+			<hr>
+			<div>
+					<div >
+				
+				<div class="box span8">
+					<div class="box-header">
+						<h2><i class="icon-signal"></i><span class="break"></span>Estadísticas Promedio // Estadísticas Mayo</h2>
+						<div class="box-icon">
+							
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div id="sincos"  class="center" style="height:300px" ></div>
+					</div>
+				</div>
+				
+				</div><!--/span-->
+				<div class="box span1">
+					
+				</div>
+			
+			
+			<hr>
+			
+			<div class="row-fluid">
+				
+			
+				<div class="box span3">
+					<div class="box-header">
+						<h2><i class="icon-list"></i><span class="break"></span>Estadísticas Semanales</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<ul class="dashboard-list">
+							<li>
+								<a href="pagos.html">
+									<i class="icon-arrow-up"></i>                               
+									<span class="green">5</span>
+									Pagos                                   
+								</a>
+							</li>
+						  <li>
+							<a href="pagos.html">
+							  <i class="icon-arrow-down"></i>
+							  <span class="red">15</span>
+							  Pagos atrasados
+							</a>
+						  </li>
+						  <li>
+						
+						  </li>
+						  <li>
+							<a href="encuestas.html">
+							  <i class="icon-comment"></i>
+							  <span class="green">45</span>
+							  Encuestas respondidas                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="calendar.html">
+							  <i class="icon-list"></i>                               
+							  <span class="green">4</span>
+							  Solicitudes                                     
+							</a>
+						  </li>
+						  <li>
+							<a href="alertas.html">
+							  <i class="icon-exclamation-sign"></i>
+							  <span class="red">2</span>
+							  Alertas
+							</a>
+						  </li>
+						
+						  
+						</ul>
+					</div>
+				</div><!--/span-->
+				
+				
+						
+			</div>
+			</div>
+			</div>
+		
+       
+					<!-- end: Content -->
+			</div><!--/#content.span10-->
+				</div><!--/fluid-row-->
+				
+
+		
+		<div class="clearfix"></div>
+		<hr>
+		
+		
+				
+
+
+	<!-- start: JavaScript-->
+
+		
+	
+		<!-- end: JavaScript-->
+	
+
