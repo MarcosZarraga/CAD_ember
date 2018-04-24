@@ -50,6 +50,8 @@ export default Ember.Controller.extend(FindQuery, {
 							return resolve(admin[0])
 						})
 					}).then((user)=>{
+						console.log(user)
+						debugger
 						user.set('unidad', this.get('selectedUnit.id'));
 						user.save();
 						//toastr.success('Bienvenido, ' + userInst.get('nombre'));
@@ -67,6 +69,8 @@ export default Ember.Controller.extend(FindQuery, {
 
 						})
 					}).then((user)=>{
+						console.log(user)
+						debugger
 						user.set('unidad', this.get('selectedUnit.id'));
 						user.save();
 						//toastr.success('Bienvenido, ' + userInst.get('nombre'));
