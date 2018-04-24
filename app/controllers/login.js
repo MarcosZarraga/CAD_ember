@@ -10,7 +10,7 @@ export default Ember.Controller.extend(FindQuery, {
 	firebase: service('firebaseApp'),
 
 	unidades: computed(function(){
-		return this.store.findAll('housing-unit');
+		return this.store.findAll('unit');
 	}),
 
 	actions: {
@@ -39,44 +39,77 @@ export default Ember.Controller.extend(FindQuery, {
 			}).then((user)=>{
 				let userId;
 				let userInst;
+
 				this.get('session').fetch().then(()=>{
 					userId =  this.get('session.currentUser.uid');
-					console.log(userId)
+					//console.log(userId)
 
 					let context = this;
 					return new Promise(function (resolve, reject){
-						context.filterEqual(context.store, 'administrator', { 'uid': userId}, function(admin){
-						console.log(admin)
-							return resolve(admin[0])
+						context.filterEqual(context.store, 'unit', { 'id': context.get('selectedUnit.id')}, function(selectedUnit){
+							//console.log(selectedUnit)
+							return resolve(selectedUnit[0])
 						})
-					}).then((user)=>{
-						console.log(user)
+					}).then((unit)=>{
+						//console.log(unit)
 						debugger
-						user.set('unidad', this.get('selectedUnit.id'));
-						user.save();
-						//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-						this.transitionToRoute('inicio');
+
+						let context2 = this;
+						return new Promise(function(resolve, reject){
+							context2.filterEqual(context2.store, 'administrator', { 'uid': userId}, function(admin){
+								//console.log(admin)
+								return resolve(admin[0])
+							})
+						}).then((user)=>{
+							//console.log(user)
+							debugger
+							if(unit.get('admin1') == user.get('id') || unit.get('admin2') == user.get('id')) {
+								//toastr.success('Bienvenido, ' + userInst.get('nombre'));
+								this.transitionToRoute('inicio');
+							} else {
+								console.log('Admin no valido')
+								this.send('signOut')
+							}
+						})
+
 					})
+					
 				}).catch(()=>{
 					userId =  this.get('session.currentUser.uid');
-					console.log(userId)
+					//console.log(userId)
 
 					let context = this;
 					return new Promise(function (resolve, reject){
-						context.filterEqual(context.store, 'administrator', { 'uid': userId}, function(admin){
-						console.log(admin)
-						return resolve(admin[0])
-
+						context.filterEqual(context.store, 'unit', { 'id': context.get('selectedUnit.id')}, function(selectedUnit){
+							//console.log(selectedUnit)
+							return resolve(selectedUnit[0])
 						})
-					}).then((user)=>{
-						console.log(user)
+					}).then((unit)=>{
+						//console.log(unit)
 						debugger
-						user.set('unidad', this.get('selectedUnit.id'));
-						user.save();
-						//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-						this.transitionToRoute('inicio');
+
+						let context2 = this;
+						return new Promise(function(resolve, reject){
+							context2.filterEqual(context2.store, 'administrator', { 'uid': userId}, function(admin){
+								console.log(admin)
+								return resolve(admin[0])
+							})
+						}).then((user)=>{
+							//console.log(user.get('id'))
+							//debugger
+							if(unit.get('admin1') == user.get('id') || unit.get('admin2') == user.get('id')) {
+								//toastr.success('Bienvenido, ' + userInst.get('nombre'));
+								this.transitionToRoute('inicio');
+							} else {
+								console.log('Admin no valido')
+								this.send('signOut')
+							}
+						})
+
 					})
+
 				})
+					
 			}).catch((error)=>{
 				console.log(error);
 			})
