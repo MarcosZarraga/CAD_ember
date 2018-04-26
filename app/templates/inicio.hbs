@@ -1,7 +1,5 @@
 {{outlet}}
 <!DOCTYPE html>
-
-	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>GUHA</title>
@@ -26,9 +24,8 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/1.png">
 	<!-- end: Favicon -->
-		
 
-		<!-- start: Header -->
+	<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -41,42 +38,39 @@
 								
 				<!-- start: Header Menu -->
 				<div class="btn-group pull-right" >	
-				{{#link-to "alertas"}}
-				
-					<a class="btn" href="alertas.html">
-						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
-					</a>
+					{{#link-to "alertas"}}
+						<a class="btn">
+							<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
+						</a>
 					{{/link-to}}
 					{{#link-to "encuestas"}}
-					<a class="btn">
-						<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">4</span>
-					</a>
+						<a class="btn">
+							<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">4</span>
+						</a>
 					{{/link-to}}
 					{{#link-to "solicitudes"}}
-					<a class="btn">
-						<i class="icon-envelope"></i><span class="hidden-phone hidden-tablet"> Solicitudes</span> <span class="label label-success hidden-phone">2</span>
-					</a>
+						<a class="btn">
+							<i class="icon-envelope"></i><span class="hidden-phone hidden-tablet"> Solicitudes</span> <span class="label label-success hidden-phone">2</span>
+						</a>
 					{{/link-to}}
 					<!-- start: User Dropdown -->
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone hidden-tablet"> Perfil</span>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Ajustes</a></li>
-						<li class="divider"></li>
-						<li><a href="login.html">Cerrar Sesión</a></li>
-					</ul>
+						<a class="btn dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-user"></i><span class="hidden-phone hidden-tablet"> Perfil</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Ajustes</a></li>
+							<li class="divider"></li>
+							<li><a {{action 'signOut'}}>Cerrar Sesión</a></li>
+						</ul>
 					<!-- end: User Dropdown -->
 				</div>
 				<!-- end: Header Menu -->
-				
 			</div>
 		</div>
 	</div>
 
-	
-		<div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row-fluid">
 				
 			<!-- start: Main Menu -->
@@ -117,18 +111,14 @@
 			
 			<div id="content" class="span10">
 			<!-- start: Content -->
-			
 			<div>
 				<ul class="breadcrumb">
-				
 					<li>
 						<a href="#">Estadísticas Totales/Estadísticas Mayo</a>
 					</li>
 				</ul>
 			</div>
 			<div class="sortable row-fluid">
-				
-					
 					
 				<div class="box-small span2">
 					<a data-rel="tooltip" title="15 Habitanes de pago pendiente." class="box-small-link" href="#">

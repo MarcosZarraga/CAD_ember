@@ -38,74 +38,91 @@ export default Ember.Controller.extend(FindQuery, {
 				password: password
 			}).then((user)=>{
 				let userId;
-				let userInst;
 
 				this.get('session').fetch().then(()=>{
 					userId =  this.get('session.currentUser.uid');
-					//console.log(userId)
-
-					let context = this;
-					return new Promise(function (resolve, reject){
-						context.filterEqual(context.store, 'unit', { 'id': context.get('selectedUnit.id')}, function(selectedUnit){
-							//console.log(selectedUnit)
-							return resolve(selectedUnit[0])
+					// this.get('store').findRecord('unit', this.get('selectedUnit.id'))
+					let context=this;
+					return new Promise(function(resolve, reject){
+						context.filterEqual(context.store, 'unit', {'id': context.get('selectedUnit.id')}, function(filteredUnit){
+							return resolve(filteredUnit[0])
 						})
 					}).then((unit)=>{
-						//console.log(unit)
-						debugger
-
-						let context2 = this;
+						// this.get('store').findRecord('administrator', userId).
+						let context=this;
 						return new Promise(function(resolve, reject){
-							context2.filterEqual(context2.store, 'administrator', { 'uid': userId}, function(admin){
-								//console.log(admin)
-								return resolve(admin[0])
+							context.filterEqual(context.store, 'administrator', {'uid': userId}, function(filteredAdmin){
+								return resolve(filteredAdmin[0])
 							})
-						}).then((user)=>{
-							//console.log(user)
-							debugger
-							if(unit.get('admin1') == user.get('id') || unit.get('admin2') == user.get('id')) {
-								//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-								this.transitionToRoute('inicio');
+						}).then((admin)=>{
+							if(unit.get('admin1') == admin.get('id')){
+								admin.currentUnit=unit.get('admin1');
+								admin.save().then(()=>{
+
+									console.log(admin)
+									debugger
+									this.transitionToRoute('inicio');
+								})
 							} else {
-								console.log('Admin no valido')
-								this.send('signOut')
+								if(unit.get('admin2') == admin.get('id')) {
+									//toastr.success('Bienvenido, ' + userInst.get('nombre'));
+									admin.currentUnit=unit.get('admin2');
+									admin.save().then(()=>{
+
+										console.log(admin)
+										debugger
+										this.transitionToRoute('inicio');
+									})	
+								} else {
+									console.log('Admin no valido')
+									debugger
+									this.send('signOut')
+								}
 							}
 						})
-
 					})
 					
 				}).catch(()=>{
 					userId =  this.get('session.currentUser.uid');
-					//console.log(userId)
-
-					let context = this;
-					return new Promise(function (resolve, reject){
-						context.filterEqual(context.store, 'unit', { 'id': context.get('selectedUnit.id')}, function(selectedUnit){
-							//console.log(selectedUnit)
-							return resolve(selectedUnit[0])
+					// this.get('store').findRecord('unit', this.get('selectedUnit.id'))
+					let context=this;
+					return new Promise(function(resolve, reject){
+						context.filterEqual(context.store, 'unit', {'id': context.get('selectedUnit.id')}, function(filteredUnit){
+							return resolve(filteredUnit[0])
 						})
 					}).then((unit)=>{
-						//console.log(unit)
-						debugger
-
-						let context2 = this;
+						// this.get('store').findRecord('administrator', userId).
+						let context=this;
 						return new Promise(function(resolve, reject){
-							context2.filterEqual(context2.store, 'administrator', { 'uid': userId}, function(admin){
-								console.log(admin)
-								return resolve(admin[0])
+							context.filterEqual(context.store, 'administrator', {'uid': userId}, function(filteredAdmin){
+								return resolve(filteredAdmin[0])
 							})
-						}).then((user)=>{
-							//console.log(user.get('id'))
-							//debugger
-							if(unit.get('admin1') == user.get('id') || unit.get('admin2') == user.get('id')) {
-								//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-								this.transitionToRoute('inicio');
+						}).then((admin)=>{
+							if(unit.get('admin1') == admin.get('id')){
+								admin.currentUnit=unit.get('admin1');
+								admin.save().then(()=>{
+
+									console.log(admin)
+									debugger
+									this.transitionToRoute('inicio');
+								})
 							} else {
-								console.log('Admin no valido')
-								this.send('signOut')
+								if(unit.get('admin2') == admin.get('id')) {
+									//toastr.success('Bienvenido, ' + userInst.get('nombre'));
+									admin.currentUnit=unit.get('admin2');
+									admin.save().then(()=>{
+
+										console.log(admin)
+										debugger
+										this.transitionToRoute('inicio');
+									})	
+								} else {
+									console.log('Admin no valido')
+									debugger
+									this.send('signOut')
+								}
 							}
 						})
-
 					})
 
 				})

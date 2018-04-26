@@ -31,7 +31,6 @@ export default DS.Model.extend({
     }),
     servicios: DS.hasMany('service'),
     gastos: DS.hasMany('spending'),
-
     alertas: DS.hasMany('alert'),
     solicitudes: DS.hasMany('request'),
 
