@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 		return DS.PromiseObject.create({
 			promise: this.get('currentUser.account').then((account)=>{
 				return this.get('store').findRecord('unit', account.get('currentUnit')).then(function(theUnit){
-					console.log(theUnit)
+					// console.log(theUnit)
 					return theUnit;
 				})
 			})
@@ -24,6 +24,14 @@ export default Ember.Controller.extend({
 	actions: {
 		addColono(){
 			this.set('addNewColono', false)
+		},
+
+		editColono(colono){
+
+		},
+
+		deleteColono(colono){
+			colono.destroyRecord()
 		},
 
 		signOut(){

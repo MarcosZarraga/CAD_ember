@@ -1,11 +1,9 @@
 {{outlet}}
-
-
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>GUHA</title>
 	<!-- end: Meta -->
-	
+
 	<!-- start: Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Mobile Specific -->
@@ -25,7 +23,7 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/1.png">
 	<!-- end: Favicon -->
-		
+
 
 		<!-- start: Header -->
 	<div class="navbar">
@@ -37,11 +35,11 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand"> <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
-								
+
 				<!-- start: Header Menu -->
-				<div class="btn-group pull-right" >	
+				<div class="btn-group pull-right" >
 				{{#link-to "alertas"}}
-				
+
 					<a class="btn" href="alertas.html">
 						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
 					</a>
@@ -69,15 +67,15 @@
 					<!-- end: User Dropdown -->
 				</div>
 				<!-- end: Header Menu -->
-				
+
 			</div>
 		</div>
 	</div>
 
-	
+
 		<div class="container-fluid">
 		<div class="row-fluid">
-				
+
 			<!-- start: Main Menu -->
 		<!-- start: Main Menu -->
 			<div class="span2 main-menu-span">
@@ -106,14 +104,14 @@
 			</div><!--/span-->
 			<!-- end: Main Menu -->
 
-			
+
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
 					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
 				</div>
 			</noscript>
-			<div class="row-fluid sortable">	
+			<div class="row-fluid sortable">
 				<div class="box span10">
 					<div class="box-header">
 						<h2><i class="icon-align-justify"></i><span class="break"></span>Registro de Pagos</h2>
@@ -125,75 +123,69 @@
 						</div>
 					</div>
 
-					{{#if addNewPago}}
-						{{agregar-pago nuevoPago=newPago addPago=(action 'addPago')}}
-					{{else}}
-						<div class="box-content ">
-						<table class="table table-bordered table-striped table-condensed">
-							  <thead>
-								  <tr>
-									  <th>Colono que realiza el pago</th>
-									  <th>Fecha de registro</th>
-									  <th>Monto</th>
-									  <th>Concepto</th>                                          
-								  </tr>
-							  </thead>   
-							  <tbody>
-								{{#each allPagos as |pago|}}
-									{{#if pago.monto}}
-										<tr>
-											<td>Aulus Agmundr</td>
-											<td class="center">
-												{{pago.fecha}}
-											</td>
-											<td class="center">
-												{{pago.monto}}
-											</td>
-											<td class="center">
-												{{pago.concepto}}
-											</td>                                        
-										</tr>	
-									{{!-- {{else}} --}}
-										{{!-- <tr>
-											<td>Sin pagos registrados</td>
-											<td class="center"></td>
-											<td class="center"></td>
-											<td class="center"></td>                       
-										</tr> --}}
-								{{/if}}     									
-								{{/each}} 
-								                            
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
-					{{/if}} 
+					{{#if model}}
+						{{#unless addNewPago}}
+							<div class="box-content "></div>
+								<table class="table table-bordered table-striped table-condensed">
+							  	<thead>
+								  	<tr>
+									  	<th>Colono que realiza el pago</th>
+									  	<th>Fecha de registro</th>
+									  	<th>Monto</th>
+									  	<th>Concepto</th>
+								  	</tr>
+							  	</thead>
+							  	<tbody>
+										{{#each model as |pago|}}
+										{{#unless pago.isNew}}
+											<tr>
+												<td>{{pago.colono.nombre}} {{pago.colono.apellidoPaterno}}</td>
+												<td class="center">
+													{{pago.fecha}}
+												</td>
+												<td class="center">
+													${{pago.monto}}.00 MXN
+												</td>
+												<td class="center">
+													{{pago.concepto}}
+												</td>
+											</tr>
+										{{!-- {{else}} --}}
+											{{!-- <tr>
+												<td>Sin pagos registrados</td>
+												<td class="center"></td>
+												<td class="center"></td>
+												<td class="center"></td>
+											</tr> --}}
+										{{/unless}}
+								{{/each}}
 
-					
+							  </tbody>
+						 		</table>
+								 <!-- <div class="pagination pagination-centered">
+								  <ul>
+									<li><a href="#">Prev</a></li>
+									<li class="active">
+									  <a href="#">1</a>
+									</li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">Next</a></li>
+								  </ul>
+								</div> -->
+								{{else}}
+									{{agregar-pago store=store currentUnit=currentUnit addPago=(action 'addPago')}}
+								{{/unless}}
+								{{else}}
+									{{agregar-pago store=store currentUnit=currentUnit addPago=(action 'addPago')}}
+					{{/if}}
+
 				</div><!--/span-->
 			</div><!--/row-->
-    
 					<!-- end: Content -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
-				
 
-		
 		<div class="clearfix"></div>
-			
-			
-
 	<!-- start: JavaScript-->
-
-	

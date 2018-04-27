@@ -4,21 +4,30 @@
 				<h3>Añadir Pago</h3>
 			</div>
 			<div class="modal-body">
-			
+
 					{{!-- <h1 class="box span4">Pago a nombre de</h1>
 						{{input type="text" value="npago" class=" span5"}} --}}
-						
-					<h1 class="box span4">Fecha</h1>{{!-- 
+						<h1 class="box span4">Pago a nombre de</h1>
+						{{#power-select
+							selected=selectedColono
+							options=settlerList
+							onchange=(action (mut selectedColono))
+							as |settler|
+						}}
+							{{settler.nombre}} {{settler.apellidoPaterno}}
+						{{/power-select}}
+
+					<h1 class="box span4">Fecha</h1>{{!--
 					{{input type="date" value=nuevoPago.fecha class="box span5"}} --}}
-					{{input type="text" value=nuevoPago.fecha class="box span5"}}
+					{{input type="text" value=newPago.fecha class="box span5"}}
 					<h1 class="box span4">Monto</h1>
-					{{input type="text" value=nuevoPago.monto class="box span5"}}
+					{{input type="number" value=newPago.monto class="box span5"}}
 					<h1 class="box span4">Concepto</h1>
-					{{input type="text" value=nuevoPago.concepto class="box span5"}}
+					{{input type="text" value=newPago.concepto class="box span5"}}
+
 			</div>
 			<div class="modal-footer">
 				<a  class="btn" data-dismiss="modal">Cancelar</a>
-				<a  class="btn btn-primary" {{action 'addPago' nuevoPago}}>Agregar Pago</a>
+				<a  class="btn btn-primary" {{action 'addPago' newPago}}>Agregar Pago</a>
 			</div>
 		{{!-- </div> --}}
-		

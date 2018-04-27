@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<title>GUHA</title>
 	<!-- end: Meta -->
-	
+
 	<!-- start: Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Mobile Specific -->
@@ -23,7 +23,7 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/1.png">
 	<!-- end: Favicon -->
-		
+
 
 		<!-- start: Header -->
 	<div class="navbar">
@@ -35,13 +35,13 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" > <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
-							
+
 				<!-- start: Header Menu -->
-				<div class="btn-group pull-right" >	
+				<div class="btn-group pull-right" >
 				{{#link-to "alertas"}}
-				
+
 					<a class="btn" href="alertas.html">
-						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
+						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">{{model.length}}</span> <span class="label label-success hidden-phone"></span>
 					</a>
 					{{/link-to}}
 					{{#link-to "encuestas"}}
@@ -67,15 +67,15 @@
 					<!-- end: User Dropdown -->
 				</div>
 				<!-- end: Header Menu -->
-				
+
 			</div>
 		</div>
 	</div>
 
-	
+
 		<div class="container-fluid">
 		<div class="row-fluid">
-				
+
 			<!-- start: Main Menu -->
 		<!-- start: Main Menu -->
 			<div class="span2 main-menu-span">
@@ -104,20 +104,22 @@
 			</div><!--/span-->
 			<!-- end: Main Menu -->
 
-			
+
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
 					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
 				</div>
 			</noscript>
-			<div class="row-fluid sortable">	
+			<div class="row-fluid sortable">
 				<div class="box span10">
 					<div class="box-header">
 						<h2><i class="icon-exclamation-sign"></i><span class="break"></span>Registro de Alertas</h2>
-					
+
 					</div>
-					<div class="box-content ">
+
+					{{#if model}}
+					<div class="box-content "></div>
 						<table class="table table-bordered table-striped table-condensed">
 							  <thead>
 								  <tr>
@@ -125,49 +127,30 @@
 									  <th>Fecha de registro de la alerta</th>
 									  <th>Motivo</th>
 									  <th>Comentarios</th>
-									                                        
+
 								  </tr>
-							  </thead>   
+							  </thead>
 							  <tbody>
+									{{#each model as |alerta|}}
 								<tr>
-									<td>Marcos Zárraga</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">Actividad Sospechosa</td>
-									<td>En la casa 101 registre actividad inusual</td>
-								
-								                                       
+									<td>{{alerta.colono.nombre}} {{alerta.colono.apellidoPaterno}}</td>
+									<td class="center">{{alerta.fecha}}</td>
+									<td class="center">{{alerta.titulo}}</td>
+									<td>{{alerta.descripcion}}</td>
 								</tr>
-								<tr>
+								{{/each}}
+
+								<!-- <tr>
 									<td>Marcos Zárraga</td>
 									<td class="center">2012/02/01</td>
 									<td class="center">Robo</td>
 									<td>Pude observar a personas robando en la casa 301</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Marcos Zárraga</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Fuga de agua</td>
-									<td>Existe una fuga de agua en la calle 4</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Marcos Zárraga</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">Fuga de gas</td>
-									<td>Me percate de olor a gas en la calle 106</td>
-									                                       
-								</tr>
-								<tr>
-									<td>Marcos Zárraga</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">Persona Desconocida</td>
-									<td>Vi a una persona desconocida rondando por la calle 7</td>
-									                                        
-								</tr>                                   
+
+								</tr> -->
 							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
+						 </table>
+						 {{/if}}
+						 <!-- <div class="pagination pagination-centered">
 						  <ul>
 							<li><a href="#">Prev</a></li>
 							<li class="active">
@@ -178,19 +161,19 @@
 							<li><a href="#">4</a></li>
 							<li><a href="#">Next</a></li>
 						  </ul>
-						</div>     
+						</div>      -->
 					</div>
 				</div><!--/span-->
 			</div><!--/row-->
-    
+
 					<!-- end: Content -->
 			</div><!--/#content.span10-->
-				</div><!--/fluid-row-->
-				
+				<!-- </div><!--/fluid-row--> -->
 
-		
+
+
 		<div class="clearfix"></div>
-			
-			
+
+
 
 	<!-- start: JavaScript-->

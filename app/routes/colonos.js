@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 
     beforeModel(){
       this.get('currentUser.account').then((account)=>{
-        console.log(account)
+        // console.log(account)
         // debugger
         if(isBlank(account)){
           // debugger

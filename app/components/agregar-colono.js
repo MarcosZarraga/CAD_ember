@@ -17,8 +17,8 @@ export default Ember.Component.extend({
 				colono.set('unidadHab', this.get('currentUnit'))
 				colono.save().then(()=>{
 					this.get('currentUnit.colonos').then((colonosList)=>{
-						console.log(colonosList)
-						debugger
+						//console.log(colonosList)
+						//debugger
 						colonosList.pushObject(colono)
 						colonosList.save().then(()=>{
 							this.get('currentUnit').then((currentUnit)=>{

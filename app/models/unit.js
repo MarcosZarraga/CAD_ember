@@ -30,10 +30,10 @@ export default DS.Model.extend({
         }
     }),
     servicios: DS.hasMany('service'),
+    pagos: DS.hasMany('payment'),
     gastos: DS.hasMany('spending'),
     alertas: DS.hasMany('alert'),
     solicitudes: DS.hasMany('request'),
 
     encuestas: DS.hasMany('poll'),
 });
-
