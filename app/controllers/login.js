@@ -56,7 +56,7 @@ export default Ember.Controller.extend(FindQuery, {
 							})
 						}).then((admin)=>{
 							if(unit.get('admin1') == admin.get('id')){
-								admin.currentUnit=unit.get('admin1');
+								admin.currentUnit=unit.get('id');
 								admin.save().then(()=>{
 
 									console.log(admin)
@@ -66,13 +66,13 @@ export default Ember.Controller.extend(FindQuery, {
 							} else {
 								if(unit.get('admin2') == admin.get('id')) {
 									//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-									admin.currentUnit=unit.get('admin2');
+									admin.currentUnit=unit.get('id');
 									admin.save().then(()=>{
 
 										console.log(admin)
 										debugger
 										this.transitionToRoute('inicio');
-									})	
+									})
 								} else {
 									console.log('Admin no valido')
 									debugger
@@ -81,7 +81,7 @@ export default Ember.Controller.extend(FindQuery, {
 							}
 						})
 					})
-					
+
 				}).catch(()=>{
 					userId =  this.get('session.currentUser.uid');
 					// this.get('store').findRecord('unit', this.get('selectedUnit.id'))
@@ -99,7 +99,7 @@ export default Ember.Controller.extend(FindQuery, {
 							})
 						}).then((admin)=>{
 							if(unit.get('admin1') == admin.get('id')){
-								admin.currentUnit=unit.get('admin1');
+								admin.currentUnit=unit.get('id');
 								admin.save().then(()=>{
 
 									console.log(admin)
@@ -109,13 +109,13 @@ export default Ember.Controller.extend(FindQuery, {
 							} else {
 								if(unit.get('admin2') == admin.get('id')) {
 									//toastr.success('Bienvenido, ' + userInst.get('nombre'));
-									admin.currentUnit=unit.get('admin2');
+									admin.currentUnit=unit.get('id');
 									admin.save().then(()=>{
 
 										console.log(admin)
 										debugger
 										this.transitionToRoute('inicio');
-									})	
+									})
 								} else {
 									console.log('Admin no valido')
 									debugger
@@ -126,7 +126,7 @@ export default Ember.Controller.extend(FindQuery, {
 					})
 
 				})
-					
+
 			}).catch((error)=>{
 				console.log(error);
 			})
@@ -137,7 +137,7 @@ export default Ember.Controller.extend(FindQuery, {
 			let password = "123123";
 			this.get('firebase').auth().createUserWithEmailAndPassword(email, password).then((user) => {
 				//	console.log(user.uid)
-				//debugger	
+				//debugger
 				this.get('store').createRecord('administrator', {
 					nombre: 'Alex',
 					apellidoPaterno: 'M.',
@@ -159,4 +159,3 @@ export default Ember.Controller.extend(FindQuery, {
 		}
 	}
 });
-

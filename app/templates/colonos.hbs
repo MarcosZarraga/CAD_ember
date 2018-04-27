@@ -1,11 +1,11 @@
 {{outlet}}
-	
-	
+
+
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>GUHA</title>
 	<!-- end: Meta -->
-	
+
 	<!-- start: Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Mobile Specific -->
@@ -25,7 +25,7 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/1.png">
 	<!-- end: Favicon -->
-		
+
 
 		<!-- start: Header -->
 	<div class="navbar">
@@ -37,10 +37,10 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" > <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
-								
-				<div class="btn-group pull-right" >	
+
+				<div class="btn-group pull-right" >
 				{{#link-to "alertas"}}
-				
+
 					<a class="btn" href="alertas.html">
 						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
 					</a>
@@ -68,15 +68,15 @@
 					<!-- end: User Dropdown -->
 				</div>
 				<!-- end: Header Menu -->
-				
+
 			</div>
 		</div>
 	</div>
 
-	
+
 		<div class="container-fluid">
 		<div class="row-fluid">
-				
+
 			<!-- start: Main Menu -->
 		<!-- start: Main Menu -->
 			<div class="span2 main-menu-span">
@@ -104,15 +104,15 @@
 				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- end: Main Menu -->
-			
+
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
 					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
 				</div>
 			</noscript>
-			
-					<div class="row-fluid sortable">		
+
+					<div class="row-fluid sortable">
 				<div class="box span10">
 					<div class="box-header" >
 						<h2><i class="icon-user"></i><span class="break"></span>Colonos</h2>
@@ -124,16 +124,12 @@
 						</div>
 					</div>
 
-					
-						    
-			
-							{{#if addNewColono}}
-						{{agregar-colono nuevoColono=newColono addColono=(action 'addColono')}}
-					{{else}}
-			<div class="box-content"> </div>
+				{{#if model}}
+					{{#unless addNewColono}}
+					<div class="box-content"> </div>
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-							  <thead>
-								  <tr>
+							<thead>
+								<tr>
 									  <th>Nombre del colono</th>
 									  <th>Apellido Paterno</th>
 									  <th>Apellido Materno</th>
@@ -141,12 +137,12 @@
 								 	 <th>Telefono</th>
 									  <th>Correo</th>
 									  <th>Status</th>
-									  <th>Acciones</th>                                          
+									  <th>Acciones</th>
 								  </tr>
-							  </thead>   
-						 <tbody>
-								{{#each allColonos as |colono|}}
-									{{#if colono.nombre}}
+							 </thead>
+							 <tbody>
+								 {{#each model as |colono|}}
+								 	{{#unless colono.isNew}}
 										<tr>
 											<td class="center">
 												{{colono.nombre}}
@@ -157,41 +153,45 @@
 											<td class="center">
 												{{colono.apellidoMaterno}}
 											</td>
-									
-						
+
+
 											<td class="center">
 												{{colono.direccion}}
-											</td>  
+											</td>
 											<td class="center">
 												{{colono.telefono}}
-											</td> 
+											</td>
 											<td class="center">
 												{{colono.email}}
-											</td> 
+											</td>
 											<td class="center">
 												<span class="label label-important">{{colono.status}}</span>
-											</td> 
+											</td>
 											<td class="center">
-									
+
 												<a class="btn btn-info" href="#">
-													<i class="icon-edit icon-white"></i>  
+													<i class="icon-edit icon-white"></i>
 												</a>
 												<a class="btn btn-danger" href="#">
-													<i class="icon-trash icon-white"></i> 
+													<i class="icon-trash icon-white"></i>
 												</a>
-											</td>                                     
-										</tr>	
-									{{/if}}     									
-								{{/each}} 
+											</td>
+										</tr>
+									{{/unless}}
+								{{/each}}
 							</tbody>
-					    </table> 
-					    {{/if}}
+					    </table>
+							{{else}}
+								{{agregar-colono store=store currentUnit=currentUnit addColono=(action 'addColono')}}
+							{{/unless}}
+						{{else}}
+							{{agregar-colono store=store currentUnit=currentUnit addColono=(action 'addColono')}}
+					  {{/if}}
 				</div>
 					</div>
 				</div><!--/span-->
-			
+
 			</div><!--/row-->
-		
-		
+
+
 		<div class="clearfix"></div>
-			
