@@ -27,7 +27,7 @@ export default Ember.Controller.extend(FindQuery, {
 				console.log('Falta pass')
 				return;
 			}
-			if(isNone(this.get('selectedUnit'))){
+			if(isBlank(this.get('selectedUnit'))){
 				console.log('Selecciona unidad')
 				return;
 			}

@@ -6,5 +6,5 @@ export default DS.Model.extend({
     telefono: DS.attr('string'),
     costo: DS.attr('number'),
 
-    unidadHab: DS.belongsTo('housing-unit')
+    unidadHab: DS.belongsTo('unit')
 });

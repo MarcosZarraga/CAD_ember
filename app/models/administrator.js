@@ -7,7 +7,7 @@ export default User.extend({
 	currentUnit: DS.attr('string')
 	// unidad: DS.attr('string'),
  	// unidadHab: computed('unidad', function(){
- 	// return this.store.findRecord('housing-unit', this.get('unidad'))
+ 	// return this.store.findRecord('unit', this.get('unidad'))
  	// })
 
 });

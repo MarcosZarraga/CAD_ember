@@ -6,6 +6,6 @@ export default DS.Model.extend({
     fecha: DS.attr('string'),
     monto: DS.attr('number'),
 
-    unidadHab: DS.belongsTo('housing-unit'),
+    unidadHab: DS.belongsTo('unit'),
     administrador: DS.belongsTo('administrator')
 });

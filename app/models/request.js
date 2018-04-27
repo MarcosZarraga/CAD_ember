@@ -7,6 +7,6 @@ export default DS.Model.extend({
     fecha: DS.attr('string'),
     aprobado: DS.attr('boolean'),
 
-    unidadHab: DS.belongsTo('housing-unit'),
+    unidadHab: DS.belongsTo('unit'),
     colono: DS.belongsTo('settler')
 });
