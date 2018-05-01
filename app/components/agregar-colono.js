@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { inject as service } from "@ember/service";
 import {computed} from '@ember/object';
+import moment from 'moment';
 
 export default Ember.Component.extend({
 	session: service(),
@@ -15,6 +16,7 @@ export default Ember.Component.extend({
 			this.get('firebase').auth().createUserWithEmailAndPassword(colono.get('email'), this.get('password')).then((colonoAuth) => {
 				colono.set('uid', colonoAuth.uid)
 				colono.set('unidadHab', this.get('currentUnit'))
+				colono.set('fechaRegistro', moment().format())
 				colono.save().then(()=>{
 					this.get('currentUnit.colonos').then((colonosList)=>{
 						//console.log(colonosList)
@@ -35,6 +37,10 @@ export default Ember.Component.extend({
 			}).catch((error)=>{
 				console.log(error);
 			})
+		},
+
+		cancel(){
+			this.sendAction('addColono')
 		}
 
 	}

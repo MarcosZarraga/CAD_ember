@@ -1,10 +1,13 @@
 import Ember from 'ember';
 import {computed} from '@ember/object';
 import {inject as service} from '@ember/service';
+import {isBlank} from '@ember/utils';
 
 export default Ember.Controller.extend({
   currentUser: service(),
 	store: service(),
+  newColono: false,
+  edtColono: null,
 
 	addNewColono: computed('newColono', function(){
 		return this.get('newColono')
@@ -22,12 +25,21 @@ export default Ember.Controller.extend({
 	}),
 
 	actions: {
-		addColono(){
-			this.set('addNewColono', false)
-		},
+    addColono() {
+      if(!isBlank(this.get('edtColono'))){
+          this.set('edtColono', null)
+      }
 
-		editColono(colono){
+      if(this.get('addNewColono')) {
+        this.set('addNewColono', false)
+      } else {
+        this.set('addNewColono', true)
+      }
+    },
 
+		editColono(colono) {
+      this.send('addColono')
+      this.set('edtColono', colono)
 		},
 
 		deleteColono(colono){

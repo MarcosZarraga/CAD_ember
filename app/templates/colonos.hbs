@@ -117,10 +117,10 @@
 					<div class="box-header" >
 						<h2><i class="icon-user"></i><span class="break"></span>Colonos</h2>
 						<div class="box-icon">
-							{{input type="checkbox" name="newColono" checked=newColono}}
-							<a href="#" class="btn-setting"><i class="icon-plus-sign"></i></a>
+							<!-- {{input type="checkbox" name="newColono" checked=newColono}} -->
+							<a href="#" class="btn-setting" {{action 'addColono'}}><i class="icon-plus-sign"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
-							<!--a href="#" class="btn-close"><i class="icon-add"></i></a-->
+							<!-- <a href="#" class="btn-close"><i class="icon-add"></i></a> -->
 						</div>
 					</div>
 
@@ -131,10 +131,9 @@
 							<thead>
 								<tr>
 									  <th>Nombre del colono</th>
-									  <th>Apellido Paterno</th>
-									  <th>Apellido Materno</th>
-									 <th>Dirección</th>
-								 	 <th>Telefono</th>
+										<th>Fecha de registro</th>
+									 	<th>Dirección</th>
+								 	 	<th>Telefono</th>
 									  <th>Correo</th>
 									  <th>Status</th>
 									  <th>Acciones</th>
@@ -145,16 +144,11 @@
 								 	{{#unless colono.isNew}}
 										<tr>
 											<td class="center">
-												{{colono.nombre}}
+												{{colono.nombre}} {{colono.apellidoPaterno}} {{colono.apellidoMaterno}}
 											</td>
 											<td class="center">
-												{{colono.apellidoPaterno}}
+												{{moment-format model.fechaURegistro 'DD/MM/YYYY'}}
 											</td>
-											<td class="center">
-												{{colono.apellidoMaterno}}
-											</td>
-
-
 											<td class="center">
 												{{colono.direccion}}
 											</td>
@@ -169,7 +163,7 @@
 											</td>
 											<td class="center">
 
-												<a class="btn btn-info" href="#">
+												<a class="btn btn-info" {{action 'editColono' colono}}>
 													<i class="icon-edit icon-white"></i>
 												</a>
 												<a class="btn btn-danger" {{action 'deleteColono' colono}}>
@@ -182,9 +176,17 @@
 							</tbody>
 					    </table>
 							{{else}}
-								{{agregar-colono store=store currentUnit=currentUnit addColono=(action 'addColono')}}
+
+								{{#if edtColono}}
+									<!-- Editando colono-->
+									{{edit-colono colono=edtColono addColono=(action 'addColono')}}
+								{{else}}
+									<!-- Agregando nuevo colono -->
+									{{agregar-colono store=store currentUnit=currentUnit addColono=(action 'addColono')}}
+								{{/if}}
 							{{/unless}}
 						{{else}}
+						<!--  No hay colonos -->
 							{{agregar-colono store=store currentUnit=currentUnit addColono=(action 'addColono')}}
 					  {{/if}}
 				</div>

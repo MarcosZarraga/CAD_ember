@@ -1,0 +1,27 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" {{action 'cancel'}}>
+		×
+	</button>
+	<h3>Añadir Colono</h3>
+	</div>
+		<div class="modal-body">
+			<p class=" ">Nombre de Colono</p>
+			{{input type="text" value=colono.nombre class="box span5"}}
+
+			<p class="">Apellido Paterno</p>
+			{{input type="text" value=colono.apellidoPaterno class="box span5"}}
+
+			<p class=" ">Apellido Materno</p>
+			{{input type="text" value=colono.apellidoMaterno class="box span5"}}
+
+			<p class=" ">Direccion</p>
+			{{input type="text" value=colono.direccion class="box span5"}}
+
+			<p class=" ">Telefono</p>
+			{{input type="text" value=colono.telefono class="box span5"}}
+
+		</div>
+		<div class="modal-footer">
+			<a class="btn" data-dismiss="modal" {{action 'cancel'}}>Cancelar</a>
+			<a  class="btn btn-primary" {{action 'addColono' colono}}>Guardar Colono</a>
+	</div>
