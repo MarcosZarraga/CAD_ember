@@ -1,10 +1,10 @@
 {{outlet}}
-	
+
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>GUHA</title>
 	<!-- end: Meta -->
-	
+
 	<!-- start: Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Mobile Specific -->
@@ -24,7 +24,7 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/1.png">
 	<!-- end: Favicon -->
-		
+
 
 		<!-- start: Header -->
 	<div class="navbar">
@@ -36,11 +36,11 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand"> <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
-								
+
 				<!-- start: Header Menu -->
-				<div class="btn-group pull-right" >	
+				<div class="btn-group pull-right" >
 				{{#link-to "alertas"}}
-				
+
 					<a class="btn" href="alertas.html">
 						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
 					</a>
@@ -68,15 +68,15 @@
 					<!-- end: User Dropdown -->
 				</div>
 				<!-- end: Header Menu -->
-				
+
 			</div>
 		</div>
 	</div>
 
-	
+
 		<div class="container-fluid">
 		<div class="row-fluid">
-				
+
 			<!-- start: Main Menu -->
 		<!-- start: Main Menu -->
 			<div class="span2 main-menu-span">
@@ -105,94 +105,96 @@
 			</div><!--/span-->
 			<!-- end: Main Menu -->
 
-			
+
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
 					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
 				</div>
 			</noscript>
-			<div class="row-fluid sortable">	
+			<div class="row-fluid sortable">
 				<div class="box span10">
 					<div class="box-header">
 						<h2><i class="icon-user"></i><span class="break"></span>Catálogo de Servicios</h2>
 						<div class="box-icon">
-							{{input type="checkbox" name="newServicio" checked=newServicio}}
-							<a href="#" class="btn-setting"><i class="icon-plus-sign"></i></a>
+							<!-- {{input type="checkbox" name="newServicio" checked=newServicio}} -->
+							<a href="#" class="btn-setting" {{action 'addServicio'}}><i class="icon-plus-sign"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
-					{{#if addNewServicio}}
-						{{agregar-servicio nuevoServicio=newServicio addServicio=(action 'addServicio')}}
-					{{else}}
 
-
-					<div class="box-content ">
-						<table class="table table-bordered table-striped table-condensed">
-							  <thead>
-								  <tr>
-								  	  <th>Nombre</th>
-									  <th>Referencia</th>
-									  <th>Telefono </th>
-									  <th>Costo</th>
-									                                        
-								  </tr>
-							  </thead>   
-							  <tbody>
-								{{#each allServicios as |servicio|}}
-									{{#if servicio.costo}}
+					{{#if model}}
+						{{#unless addNewServicio}}
+						<div class="box-content ">
+							<table class="table table-bordered table-striped table-condensed">
+									<thead>
 										<tr>
-											<td class="center">
-												{{servicio.nombre}}
-											</td>
-											<td class="center">
-												{{servicio.referencia}}
-											</td>
-											<td class="center">
-												{{servicio.telefono}}
-											</td>
-											<td class="center">
-												{{servicio.costo}}
-											</td>                                        
-										</tr>	
-									{{!-- {{else}} --}}
-										{{!-- <tr>
-											<td>Sin pagos registrados</td>
-											<td class="center"></td>
-											<td class="center"></td>
-											<td class="center"></td>                       
-										</tr> --}}
-								{{/if}}     									
-								{{/each}} 
-								                                             
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
+												<th>Nombre</th>
+											<th>Referencia</th>
+											<th>Telefono </th>
+											<th>Costo</th>
+
+										</tr>
+									</thead>
+									<tbody>
+									{{#each model as |servicio|}}
+										{{#if servicio.costo}}
+											<tr>
+												<td class="center">
+													{{servicio.nombre}}
+												</td>
+												<td class="center">
+													{{servicio.referencia}}
+												</td>
+												<td class="center">
+													{{servicio.telefono}}
+												</td>
+												<td class="center">
+													${{servicio.costo}}.00 MXN
+												</td>
+											</tr>
+										{{!-- {{else}} --}}
+											{{!-- <tr>
+												<td>Sin pagos registrados</td>
+												<td class="center"></td>
+												<td class="center"></td>
+												<td class="center"></td>
+											</tr> --}}
+									{{/if}}
+									{{/each}}
+
+									</tbody>
+							 </table>
+							 <!-- <div class="pagination pagination-centered">
+								<ul>
+								<li><a href="#">Prev</a></li>
+								<li class="active">
+									<a href="#">1</a>
+								</li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">Next</a></li>
+								</ul>
+							</div>      -->
+						</div>
+						{{else}}
+							{{agregar-servicio store=store currentUnit=currentUnit addServicio=(action 'addServicio')}}
+						{{/unless}}
+					{{else}}
+						{{agregar-servicio store=store currentUnit=currentUnit addServicio=(action 'addServicio')}}
 					{{/if}}
 				</div><!--/span-->
 			</div><!--/row-->
-    
+
 					<!-- end: Content -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
-				
-		
-		
+
+
+
 		<div class="clearfix"></div>
-			
-			
+
+
 
 	<!-- start: JavaScript-->
-

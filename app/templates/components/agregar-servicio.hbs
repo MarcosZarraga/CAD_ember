@@ -1,25 +1,22 @@
-
-
-
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
+				<button type="button" class="close" data-dismiss="modal" {{action 'cancel'}}>
+					×
+				</button>
 				<h3>Añadir Servicio</h3>
 			</div>
 			<div class="modal-body">
-			
-					<h1 class="box span4">Nombre</h1>{{!-- 
-					{{input type="date" value=nuevoPago.fecha class="box span5"}} --}}
-					{{input type="text" value=nuevoServicio.nombre class="box span5"}}
-					<h1 class="box span4">Referencia</h1>
-					{{input type="text" value=nuevoServicio.referencia class="box span5"}}
-					<h1 class="box span4">Telefono</h1>
-					{{input type="text" value=nuevoServicio.telefono class="box span5"}}
-						<h1 class="box span4">Costo</h1>
-					{{input type="text" value=nuevoServicio.costo class="box span5"}}
+
+					<p>Nombre</p>
+					{{input type="text" value=newServicio.nombre class="box span5"}}
+					<p>Referencia</p>
+					{{textarea type="text" value=newServicio.referencia class="box span5"}}
+					<p>Telefono</p>
+					{{input type="text" value=newServicio.telefono class="box span5"}}
+						<p>Costo</p>
+					{{input type="number" value=newServicio.costo class="box span5"}}
 			</div>
-			
+
 			<div class="modal-footer">
-				<a href="servicios.html" class="btn" data-dismiss="modal">Cancelar</a>
-				<a  class="btn btn-primary" {{action 'addServicio' nuevoServicio}}>Añadir Servicio</a>
+				<a class="btn" data-dismiss="modal" {{action 'cancel'}}>Cancelar</a>
+				<a  class="btn btn-primary" {{action 'addServicio' newServicio}}>Añadir Servicio</a>
 			</div>
-		
