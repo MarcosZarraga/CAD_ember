@@ -59,8 +59,8 @@ export default Ember.Controller.extend(FindQuery, {
 								admin.currentUnit=unit.get('id');
 								admin.save().then(()=>{
 
-									console.log(admin)
-									debugger
+									//console.log(admin)
+									//debugger
 									this.transitionToRoute('inicio');
 								})
 							} else {
@@ -69,13 +69,13 @@ export default Ember.Controller.extend(FindQuery, {
 									admin.currentUnit=unit.get('id');
 									admin.save().then(()=>{
 
-										console.log(admin)
-										debugger
+										//console.log(admin)
+										//debugger
 										this.transitionToRoute('inicio');
 									})
 								} else {
 									console.log('Admin no valido')
-									debugger
+									//debugger
 									this.send('signOut')
 								}
 							}
@@ -102,8 +102,8 @@ export default Ember.Controller.extend(FindQuery, {
 								admin.currentUnit=unit.get('id');
 								admin.save().then(()=>{
 
-									console.log(admin)
-									debugger
+									// console.log(admin)
+									// debugger
 									this.transitionToRoute('inicio');
 								})
 							} else {
@@ -112,13 +112,13 @@ export default Ember.Controller.extend(FindQuery, {
 									admin.currentUnit=unit.get('id');
 									admin.save().then(()=>{
 
-										console.log(admin)
-										debugger
+										// console.log(admin)
+										// debugger
 										this.transitionToRoute('inicio');
 									})
 								} else {
 									console.log('Admin no valido')
-									debugger
+									// debugger
 									this.send('signOut')
 								}
 							}

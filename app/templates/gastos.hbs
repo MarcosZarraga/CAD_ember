@@ -2,7 +2,7 @@
 	<meta charset="utf-8">
 	<title>GUHA</title>
 	<!-- end: Meta -->
-	
+
 	<!-- start: Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Mobile Specific -->
@@ -22,28 +22,6 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/1.png">
 	<!-- end: Favicon -->
-<!-- esto es fire base prro -->
-
-		<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCImjD67U5oAmEI_aqeTRjVOuNzGr50ZxI",
-    authDomain: "guha-dev.firebaseapp.com",
-    databaseURL: "https://guha-dev.firebaseio.com",
-    projectId: "guha-dev",
-    storageBucket: "guha-dev.appspot.com",
-    messagingSenderId: "637932129887"
-  };
-  firebase.initializeApp(config);
-</script>
-
-<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-messaging.js"></script>
-
 
 		<!-- start: Header -->
 	<div class="navbar">
@@ -55,11 +33,11 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" > <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
-								
+
 				<!-- start: Header Menu -->
-				<div class="btn-group pull-right" >	
+				<div class="btn-group pull-right" >
 				{{#link-to "alertas"}}
-				
+
 					<a class="btn" href="alertas.html">
 						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
 					</a>
@@ -87,15 +65,15 @@
 					<!-- end: User Dropdown -->
 				</div>
 				<!-- end: Header Menu -->
-				
+
 			</div>
 		</div>
 	</div>
 
-	
+
 		<div class="container-fluid">
 		<div class="row-fluid">
-				
+
 			<!-- start: Main Menu -->
 		<!-- start: Main Menu -->
 			<div class="span2 main-menu-span">
@@ -123,93 +101,84 @@
 			</div><!--/span-->
 			<!-- end: Main Menu -->
 
-			
+
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
 					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
 				</div>
 			</noscript>
-			<div class="row-fluid sortable">	
+			<div class="row-fluid sortable">
 				<div class="box span10">
 					<div class="box-header">
 						<h2><i class="icon-align-justify"></i><span class="break"></span>Registro de Gastos</h2>
 						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="icon-plus-sign"></i></a>
+							<a href="#" class="btn-setting" {{action 'addGasto'}}><i class="icon-plus-sign"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
-					<div class="box-content ">
-						<table class="table table-bordered table-striped table-condensed">
-							  <thead>
-								  <tr>
-									  <th>Referencia</th>
-									  <th>Fecha de registro del gasto</th>
-									  <th>Monto</th>
-									                                        
-								  </tr>
-							  </thead>   
-							  <tbody>
-								<tr>
-									<td>Jardineros</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">$1000.00 MXN</td>
-								
-								                                       
-								</tr>
-								<tr>
-									<td>Sueldos caseta de seguridad</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">$1000.00 MXN</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Alumbrado Público</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">$1000.00 MXN</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Mantenimiento Alberca</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">$1000.00 MXN</td>
-									                                       
-								</tr>
-								<tr>
-									<td>Bache calle principal</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">$1000.00 MXN</td>
-									                                        
-								</tr>                                   
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
+
+					{{#if model}}
+						{{#unless addNewGasto}}
+						<div class="box-content ">
+							<table class="table table-bordered table-striped table-condensed">
+									<thead>
+										<tr>
+											<th>Administrador que realiza el gasto</th>
+											<th>Fecha de registro</th>
+											<th>Monto</th>
+											<th>Referencia</th>
+										</tr>
+									</thead>
+									<tbody>
+										{{#each model as |gasto|}}
+											{{#unless gasto.isNew}}
+												<tr>
+													<td>{{gasto.administrador.nombre}} {{gasto.administrador.apellidoPaterno}}</td>
+													<td class="center">	{{moment-format gasto.fecha 'DD/MM/YYYY	HH:mm' }}</td>
+													<td class="center">${{gasto.monto}}.00 MXN</td>
+													<td>{{gasto.referencia}}</td>
+												</tr>
+											{{/unless}}
+										{{/each}}
+									</tbody>
+							 </table>
+							 <!-- <div class="pagination pagination-centered">
+								<ul>
+								<li><a href="#">Prev</a></li>
+								<li class="active">
+									<a href="#">1</a>
+								</li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">Next</a></li>
+								</ul>
+							</div> -->
+						</div>
+						{{else}}
+						<!-- Nuevo -->
+						{{agregar-gasto store=store admin=currentAdmin currentUnit=currentUnit addGasto=(action 'addGasto')}}
+						{{/unless}}
+					{{else}}
+					<!-- Nuevo -->
+					{{agregar-gasto store=store admin=currentAdmin currentUnit=currentUnit addGasto=(action 'addGasto')}}
+					{{/if}}
+
 				</div><!--/span-->
 			</div><!--/row-->
-    
+
 					<!-- end: Content -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
-				
+
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
 				<h3>Añadir Gasto</h3>
 			</div>
 			<div class="modal-body">
-			
+
 					<h1 class="box span4">Referencia</h1>
 					<input type="text" name="ngasto" class=" span5">
 					<h1 class="box span4">Fecha</h1>
@@ -229,6 +198,5 @@
 				<a href="gastos.html" class="btn btn-primary">Agregar Gasto</a>
 			</div>
 		</div>
-		
+
 		<div class="clearfix"></div>
-			

@@ -1,0 +1,25 @@
+{{!-- <div class="modal hide fade" id="myModal"> --}}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" {{action 'cancel'}}>
+      ×
+    </button>
+    <h3>Añadir Gasto</h3>
+  </div>
+  <div class="modal-body">
+
+      {{!-- <h1 class="box span4">Pago a nombre de</h1>
+        {{input type="text" value="npago" class=" span5"}} --}}
+      <p>Gasto realizado por</p>
+      {{input type="text" placeholder=admin.email disabled=true class="box span5"}}
+      <br> <br>
+      <p >Monto</p>
+      {{input type="number" value=newGasto.monto class="box span5"}}
+      <p >Referencia</p>
+      {{input type="text" value=newGasto.referencia class="box span5"}}
+
+  </div>
+  <div class="modal-footer">
+    <a  class="btn" data-dismiss="modal" {{action 'cancel'}}>Cancelar</a>
+    <a  class="btn btn-primary" {{action 'addGasto' newGasto}}>Agregar Gasto</a>
+  </div>
+{{!-- </div> --}}
