@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { inject as service } from "@ember/service";
 import {computed} from '@ember/object';
+import moment from 'moment';
 
 export default Ember.Component.extend({
 	session: service(),
@@ -24,6 +25,7 @@ export default Ember.Component.extend({
 		addPago(pago){
 				pago.set('colono', this.get('selectedColono'));
 				pago.set('unidadHab', this.get('currentUnit'));
+				pago.set('fecha', moment().format())
 				pago.save().then(()=>{
 					this.get('store').findRecord('settler', this.get('selectedColono.id')).then((colono)=>{
 						colono.get('pagos').then((pagosList)=>{
@@ -45,6 +47,10 @@ export default Ember.Component.extend({
 						})
 					})
 			})
+		},
+
+		cancel(){
+			this.sendAction('addPago')
 		}
 	}
 });

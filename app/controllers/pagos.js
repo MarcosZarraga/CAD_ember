@@ -24,7 +24,11 @@ export default Ember.Controller.extend({
 
 	actions: {
 		addPago(){
-			this.set('addNewPago', false)
+			if(this.get('addNewPago')) {
+				this.set('addNewPago', false)
+			} else {
+				this.set('addNewPago', true)
+			}
 		},
 
 		signOut(){

@@ -1,33 +1,32 @@
 		{{!-- <div class="modal hide fade" id="myModal"> --}}
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
+				<button type="button" class="close" data-dismiss="modal" {{action 'cancel'}}>
+					×
+				</button>
 				<h3>Añadir Pago</h3>
 			</div>
 			<div class="modal-body">
 
 					{{!-- <h1 class="box span4">Pago a nombre de</h1>
 						{{input type="text" value="npago" class=" span5"}} --}}
-						<h1 class="box span4">Pago a nombre de</h1>
-						{{#power-select
+					<p>Pago a nombre de</p>
+					{{#power-select
 							selected=selectedColono
 							options=settlerList
 							onchange=(action (mut selectedColono))
 							as |settler|
-						}}
-							{{settler.nombre}} {{settler.apellidoPaterno}}
-						{{/power-select}}
-
-					<h1 class="box span4">Fecha</h1>{{!--
-					{{input type="date" value=nuevoPago.fecha class="box span5"}} --}}
-					{{input type="text" value=newPago.fecha class="box span5"}}
-					<h1 class="box span4">Monto</h1>
+					}}
+						{{settler.nombre}} {{settler.apellidoPaterno}}
+					{{/power-select}}
+					<br>
+					<p >Monto</p>
 					{{input type="number" value=newPago.monto class="box span5"}}
-					<h1 class="box span4">Concepto</h1>
+					<p >Concepto</p>
 					{{input type="text" value=newPago.concepto class="box span5"}}
 
 			</div>
 			<div class="modal-footer">
-				<a  class="btn" data-dismiss="modal">Cancelar</a>
+				<a  class="btn" data-dismiss="modal" {{action 'cancel'}}>Cancelar</a>
 				<a  class="btn btn-primary" {{action 'addPago' newPago}}>Agregar Pago</a>
 			</div>
 		{{!-- </div> --}}
