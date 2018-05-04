@@ -53,14 +53,14 @@
 					</a>
 					{{/link-to}}
 					<!-- start: User Dropdown -->
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="btn dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-user"></i><span class="hidden-phone hidden-tablet"> Perfil</span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Ajustes</a></li>
+						<li><a>Ajustes</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Cerrar Sesión</a></li>
+						<li><a {{action 'signOut'}}>Cerrar Sesión</a></li>
 					</ul>
 					<!-- end: User Dropdown -->
 				</div>
@@ -113,8 +113,8 @@
 					<div class="box-header">
 						<h2><i class="icon-align-justify"></i><span class="break"></span>Registro de Gastos</h2>
 						<div class="box-icon">
-							<a href="#" class="btn-setting" {{action 'addGasto'}}><i class="icon-plus-sign"></i></a>
-							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a class="btn-setting" {{action 'addGasto'}}><i class="icon-plus-sign"></i></a>
+							<a class="btn-minimize"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
 
@@ -172,31 +172,10 @@
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
 
-		<div class="modal hide fade" id="myModal">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Añadir Gasto</h3>
-			</div>
-			<div class="modal-body">
-
-					<h1 class="box span4">Referencia</h1>
-					<input type="text" name="ngasto" class=" span5">
-					<h1 class="box span4">Fecha</h1>
-					<input type="date" name="fgasto" class="box span5">
-					<h1 class="box span4">Monto</h1>
-					<input type="text" name="mgasto" class="box span5">
-					<h1 class="box span4">Añadir Comprobante</h1>
-							<div class="control-group">
-							  <div class="controls">
-								<input name="comGasto" class="input-file uniform_on" id="fileInput" type="file">
-							  </div>
-			</div>
-			</div>
-
-			<div class="modal-footer">
-				<a href="gastos.html" class="btn" data-dismiss="modal">Cancelar</a>
-				<a href="gastos.html" class="btn btn-primary">Agregar Gasto</a>
-			</div>
-		</div>
-
-		<div class="clearfix"></div>
+				<div class="clearfix"></div>
+				<hr>
+				<!-- start: JavaScript-->
+				<script src="js/jquery-1.9.1.min.js"></script>
+				<script src="js/jquery-migrate-1.0.0.min.js"></script>
+				<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+			<script src="js/bootstrap.js"></script>

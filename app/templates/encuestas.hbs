@@ -57,14 +57,14 @@
 					</a>
 					{{/link-to}}
 					<!-- start: User Dropdown -->
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="btn dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-user"></i><span class="hidden-phone hidden-tablet"> Perfil</span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Ajustes</a></li>
+						<li><a>Ajustes</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Cerrar Sesión</a></li>
+						<li><a {{action 'signOut'}}>Cerrar Sesión</a></li>
 					</ul>
 					<!-- end: User Dropdown -->
 				</div>
@@ -219,3 +219,9 @@
 		</div>
 
 		<div class="clearfix"></div>
+		<hr>
+		<!-- start: JavaScript-->
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery-migrate-1.0.0.min.js"></script>
+		<script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+	<script src="js/bootstrap.js"></script>
