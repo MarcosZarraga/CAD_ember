@@ -1,10 +1,12 @@
 import Ember from 'ember';
 import {computed} from '@ember/object';
 import {inject as service} from '@ember/service';
+import {isBlank} from '@ember/utils';
 
 export default Ember.Controller.extend({
   currentUser: service(),
   store: service(),
+  viewingEncuesta: null,
 
   addNewEncuesta: computed('newEncuesta', function(){
     return this.get('newEncuesta')
@@ -31,12 +33,21 @@ export default Ember.Controller.extend({
 
   actions: {
     addEncuesta(){
+      if(!isBlank(this.get('viewingEncuesta'))){
+          this.set('viewingEncuesta', null)
+      }
+
 			if(this.get('addNewEncuesta')) {
 				this.set('addNewEncuesta', false)
 			} else {
 				this.set('addNewEncuesta', true)
 			}
 		},
+
+    viewEncuesta(encuesta) {
+      this.send('addEncuesta')
+      this.set('viewingEncuesta', encuesta)
+    },
 
 		signOut(){
 			this.get('currentUser.account').then((account)=>{

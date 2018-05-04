@@ -131,6 +131,7 @@
 										<thead>
 											<tr>
 												<th>Nombre</th>
+												<th>Descripción</th>
 												<th>Fecha de cierre</th>
 												<th>Respuestas</th>
 												<TH>Acciones</TH>
@@ -142,14 +143,15 @@
 												{{#unless encuesta.isNew}}
 													<tr>
 														<td>{{encuesta.titulo}}</td>
+														<td>{{encuesta.descripcion}}</td>
 														<td class="center">{{moment-format encuesta.fechaCierre 'DD/MM/YYYY	HH:mm' }}</td>
 														<td class="center">{{encuesta.respondidas}}</td>
 														<td class="center">
 
-														<a class="btn btn-primary" href="#">
+														<a class="btn btn-primary" {{action 'viewEncuesta' encuesta	}}>
 															<i class="icon-eye-open icon-white"></i>
 														</a>
-														<a class="btn btn-danger" href="#">
+														<a class="btn btn-danger">
 															<i class="icon-trash icon-white"></i>
 														</a>
 													</td>
@@ -174,7 +176,12 @@
 								</div> -->
 							</div>
 						{{else}}
-							{{crear-encuesta store=store currentUnit=currentUnit admin=currentAdmin addEncuesta=(action 'addEncuesta')}}
+							{{#if viewingEncuesta}}
+							<!-- Visualizando encuesta-->
+								{{ver-encuesta encuesta=viewingEncuesta addEncuesta=(action 'addEncuesta')}}
+							{{else}}
+								{{crear-encuesta store=store currentUnit=currentUnit admin=currentAdmin addEncuesta=(action 'addEncuesta')}}
+							{{/if}}
 						{{/unless}}
 					{{else}}
 						{{crear-encuesta store=store currentUnit=currentUnit admin=currentAdmin addEncuesta=(action 'addEncuesta')}}

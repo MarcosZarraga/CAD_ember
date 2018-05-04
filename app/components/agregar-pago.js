@@ -32,11 +32,14 @@ export default Ember.Component.extend({
 							pagosList.pushObject(pago)
 							pagosList.save().then(()=>{
 								colono.save().then(()=>{
+									//debugger
 									this.get('currentUnit.pagos').then((paymentList)=>{
 										paymentList.pushObject(pago)
+										//debugger
 										paymentList.save().then(()=>{
 											this.get('currentUnit').then((currentUnit)=>{
 												currentUnit.save().then(()=>{
+													//debugger
 													this.sendAction('addPago')
 												})
 											})
