@@ -139,17 +139,17 @@
 						<table class="table table-bordered table-striped table-condensed">
 							  <thead>
 								  <tr>
-									  <th>Colono que envio la alerta</th>
+									  <th>Colono que envió la alerta</th>
 									  <th>Fecha de registro de la alerta</th>
 									  <th>Motivo</th>
-									  <th>Comentarios</th>
+									  <th>Descripción</th>
 								  </tr>
 							  </thead>
 							  <tbody>
 									{{#each model as |alerta|}}
 										<tr>
 											<td>{{alerta.colono.nombre}} {{alerta.colono.apellidoPaterno}}</td>
-											<td class="center">{{alerta.fecha}}</td>
+											<td class="center">{{moment-format alerta.fecha 'DD/MM/YYYY	HH:mm' }}</td>
 											<td class="center">{{alerta.titulo}}</td>
 											<td>{{alerta.descripcion}}</td>
 										</tr>

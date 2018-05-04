@@ -17,5 +17,18 @@ export default Ember.Controller.extend({
       })
     });
   }),
-  
+
+  actions: {
+    aprobar(solicitud){
+      solicitud.set('aprobado', true);
+      solicitud.save();
+    },
+
+    rechazar(solicitud){
+      solicitud.set('aprobado', false);
+      solicitud.save();
+    }
+
+  }
+
 });
