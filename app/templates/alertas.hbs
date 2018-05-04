@@ -118,9 +118,9 @@
 
 					</div>
 
-					{{#if model}}
-					<div class="box-content "></div>
 
+					<div class="box-content ">
+						{{#if model}}
 						<table class="table table-bordered table-striped table-condensed">
 							  <thead>
 								  <tr>
@@ -128,30 +128,29 @@
 									  <th>Fecha de registro de la alerta</th>
 									  <th>Motivo</th>
 									  <th>Comentarios</th>
-
 								  </tr>
 							  </thead>
 							  <tbody>
 									{{#each model as |alerta|}}
-								<tr>
-									<td>{{alerta.colono.nombre}} {{alerta.colono.apellidoPaterno}}</td>
-									<td class="center">{{alerta.fecha}}</td>
-									<td class="center">{{alerta.titulo}}</td>
-									<td>{{alerta.descripcion}}</td>
-								</tr>
-								{{/each}}
+										<tr>
+											<td>{{alerta.colono.nombre}} {{alerta.colono.apellidoPaterno}}</td>
+											<td class="center">{{alerta.fecha}}</td>
+											<td class="center">{{alerta.titulo}}</td>
+											<td>{{alerta.descripcion}}</td>
+										</tr>
+										{{/each}}
 
-								<!-- <tr>
-									<td>Marcos Zárraga</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Robo</td>
-									<td>Pude observar a personas robando en la casa 301</td>
+											<!-- <tr>
+												<td>Marcos Zárraga</td>
+												<td class="center">2012/02/01</td>
+												<td class="center">Robo</td>
+												<td>Pude observar a personas robando en la casa 301</td>
 
-								</tr> -->
+											</tr> -->
 							  </tbody>
 						 </table>
 						 {{else}}
-						 	<h4>Aún no se registran alertas.</h4>
+						 	<h5>Aún no se registran alertas.</h5>
 						 {{/if}}
 						 <!-- <div class="pagination pagination-centered">
 						  <ul>
@@ -171,9 +170,8 @@
 
 					<!-- end: Content -->
 			</div><!--/#content.span10-->
-				<!-- </div><!/fluid-row--> 
-
-
+				<!-- </div><!/fluid-row-->
+</div>
 
 		<div class="clearfix"></div>
 

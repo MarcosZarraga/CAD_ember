@@ -122,9 +122,10 @@
 						</div>
 					</div>
 
-					{{#if model}}
-						{{#unless addNewPago}}
-							<div class="box-content "></div>
+
+							<div class="box-content ">
+							{{#if model}}
+								{{#unless addNewPago}}
 								<table class="table table-bordered table-striped table-condensed">
 							  	<thead>
 								  	<tr>
@@ -179,7 +180,7 @@
 								{{else}}
 									{{agregar-pago store=store currentUnit=currentUnit addPago=(action 'addPago')}}
 					{{/if}}
-
+</div>
 				</div><!--/span-->
 			</div><!--/row-->
 					<!-- end: Content -->

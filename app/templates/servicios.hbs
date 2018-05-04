@@ -123,9 +123,10 @@
 						</div>
 					</div>
 
-					{{#if model}}
-						{{#unless addNewServicio}}
+
 						<div class="box-content ">
+							{{#if model}}
+								{{#unless addNewServicio}}
 							<table class="table table-bordered table-striped table-condensed">
 									<thead>
 										<tr>
@@ -177,21 +178,20 @@
 								<li><a href="#">Next</a></li>
 								</ul>
 							</div>      -->
-						</div>
+
 						{{else}}
 							{{agregar-servicio store=store currentUnit=currentUnit addServicio=(action 'addServicio')}}
 						{{/unless}}
 					{{else}}
 						{{agregar-servicio store=store currentUnit=currentUnit addServicio=(action 'addServicio')}}
 					{{/if}}
+					</div>
 				</div><!--/span-->
 			</div><!--/row-->
 
 					<!-- end: Content -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
-
-
 
 		<div class="clearfix"></div>
 
