@@ -35,6 +35,7 @@
     "ember-emberfire-find-query": "^1.0.3",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
+    "ember-math-helpers": "^2.4.1",
     "ember-moment": "^7.7.0",
     "ember-power-select": "^2.0.0-beta.4",
     "ember-resolver": "^4.0.0",

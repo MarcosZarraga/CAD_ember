@@ -1,1 +1,30 @@
-{{yield}}
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" {{action 'cancel'}}>
+		×
+	</button>
+	<h3>Añadir Encuesta</h3>
+	</div>
+		<div class="modal-body">
+			<p class=" ">Título</p>
+			{{input type="text" value=newEncuesta.titulo class="box span5"}}
+
+			<p class="">Descripción</p>
+			{{textarea type="text" value=newEncuesta.descripcion class="box span5"}}
+
+			<p class=" ">Fecha de Cierre</p>
+			{{input type="date" value=fechaCierre class="box span5"}}
+      {{log fechaCierre}}
+      {{log deadlineEncuesta}}
+
+      <h5 class=" ">Preguntas</h5>
+      {{#each newEncuesta.preguntas as |pregunta index|}}
+        {{agregar-pregunta model=pregunta indexPr=index}}
+      {{/each}}
+      <br>
+      <button type="button" class="btn btn-secondary" {{action 'addPregunta' newEncuesta}}>Agregar Pregunta</button>
+
+		</div>
+		<div class="modal-footer">
+			<a class="btn" data-dismiss="modal" {{action 'cancel'}}>Cancelar</a>
+			<a  class="btn btn-primary" {{action 'addEncuesta' newEncuesta}}>Guardar Encuesta</a>
+</div>

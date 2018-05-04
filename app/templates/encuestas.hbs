@@ -1,11 +1,11 @@
 {{outlet}}
 <!DOCTYPE html>
-	
+
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>GUHA</title>
 	<!-- end: Meta -->
-	
+
 	<!-- start: Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- end: Mobile Specific -->
@@ -25,7 +25,7 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/1.png">
 	<!-- end: Favicon -->
-		
+
 
 		<!-- start: Header -->
 	<div class="navbar">
@@ -37,18 +37,18 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" > <img alt="Administación de Unidad" src="img/1.png" /> <span>Administación de Unidad Habitacional</span></a>
-								
+
 				<!-- start: Header Menu -->
-				<div class="btn-group pull-right" >	
+				<div class="btn-group pull-right" >
 				{{#link-to "alertas"}}
-				
+
 					<a class="btn" href="alertas.html">
 						<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
 					</a>
 					{{/link-to}}
 					{{#link-to "encuestas"}}
 					<a class="btn">
-						<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">4</span>
+						<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">{{model.length}}</span>
 					</a>
 					{{/link-to}}
 					{{#link-to "solicitudes"}}
@@ -69,15 +69,15 @@
 					<!-- end: User Dropdown -->
 				</div>
 				<!-- end: Header Menu -->
-				
+
 			</div>
 		</div>
 	</div>
 
-	
+
 		<div class="container-fluid">
 		<div class="row-fluid">
-				
+
 			<!-- start: Main Menu -->
 		<!-- start: Main Menu -->
 			<div class="span2 main-menu-span">
@@ -106,139 +106,95 @@
 			</div><!--/span-->
 			<!-- end: Main Menu -->
 
-			
+
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
 					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
 				</div>
 			</noscript>
-			<div class="row-fluid sortable">	
+			<div class="row-fluid sortable">
 				<div class="box span10">
 					<div class="box-header">
 						<h2><i class="icon-check"></i><span class="break"></span>Encuestas</h2>
 						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="icon-plus-sign"></i></a>
+							<a href="#" class="btn-setting" {{action 'addEncuesta'}}><i class="icon-plus-sign"></i></a>
 							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
-					<div class="box-content ">
-						<table class="table table-bordered table-striped table-condensed">
-							  <thead>
-								  <tr>
-									  <th>Nombre</th>
-									  <th>Fecha de lanzamiento</th>
-									  <th>Respuestas</th>
-									  <TH>Acciones</TH>
-									                                        
-								  </tr>
-							  </thead>   
-							  <tbody>
-								<tr>
-									<td>Encuesta 1</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">3</td>
-									<td class="center">
-									
-									<a class="btn btn-primary" href="#">
-										<i class="icon-eye-open icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-								
-								                                       
-								</tr>
-								<tr>
-									<td>Encuesta 2</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">10</td>
-									<td class="center">
-									
-									<a class="btn btn-primary" href="#">
-										<i class="icon-eye-open icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Encuesta 3</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">15</td>
-									<td class="center">
-									
-									<a class="btn btn-primary" href="#">
-										<i class="icon-eye-open icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-									                                      
-								</tr>
-								<tr>
-									<td>Encuesta 4</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">15</td>
-									<td class="center">
-									
-									<a class="btn btn-primary" href="#">
-										<i class="icon-eye-open icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-									                                       
-								</tr>
-								<tr>
-									<td>Encuesta 5</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">5</td>
-									<td class="center">
-									
-									<a class="btn btn-primary" href="#">
-										<i class="icon-eye-open icon-white"></i>  
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-									</a>
-								</td>
-									                                        
-								</tr>                                   
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
+
+
+					{{#if model}}
+						{{#unless addNewEncuesta}}
+							<div class="box-content ">
+								<table class="table table-bordered table-striped table-condensed">
+										<thead>
+											<tr>
+												<th>Nombre</th>
+												<th>Fecha de cierre</th>
+												<th>Respuestas</th>
+												<TH>Acciones</TH>
+
+											</tr>
+										</thead>
+										<tbody>
+											{{#each model as |encuesta|}}
+												{{#unless encuesta.isNew}}
+													<tr>
+														<td>{{encuesta.titulo}}</td>
+														<td class="center">{{moment-format encuesta.fechaCierre 'DD/MM/YYYY	HH:mm' }}</td>
+														<td class="center">{{encuesta.respondidas}}</td>
+														<td class="center">
+
+														<a class="btn btn-primary" href="#">
+															<i class="icon-eye-open icon-white"></i>
+														</a>
+														<a class="btn btn-danger" href="#">
+															<i class="icon-trash icon-white"></i>
+														</a>
+													</td>
+
+
+													</tr>
+												{{/unless}}
+											{{/each}}
+										</tbody>
+								 </table>
+								 <!-- <div class="pagination pagination-centered">
+									<ul>
+									<li><a href="#">Prev</a></li>
+									<li class="active">
+										<a href="#">1</a>
+									</li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">Next</a></li>
+									</ul>
+								</div> -->
+							</div>
+						{{else}}
+							{{crear-encuesta store=store currentUnit=currentUnit admin=currentAdmin addEncuesta=(action 'addEncuesta')}}
+						{{/unless}}
+					{{else}}
+						{{crear-encuesta store=store currentUnit=currentUnit admin=currentAdmin addEncuesta=(action 'addEncuesta')}}
+					{{/if}}
+
+
 				</div><!--/span-->
 			</div><!--/row-->
-    
+
 					<!-- end: Content -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
-				
+
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
 				<h3>Crear Encuesta</h3>
 			</div>
 			<div class="modal-body">
-			
+
 					<h1 class="box span4">Pregunta 1</h1>
 					<input type="text" name="p1" class=" span5">
 					<h1 class="box span4">Respuesta 1</h1>
@@ -254,9 +210,5 @@
 				<a href="encuestas.html" class="btn btn-primary">Crear Encuesta</a>
 			</div>
 		</div>
-		
+
 		<div class="clearfix"></div>
-			
-			
-
-

@@ -1,0 +1,10 @@
+<h5>Pregunta {{add indexPr 1}}</h5>
+<p class=" ">Contenido</p>
+{{input type="text" value=model.contenido class="box span5"}}
+<br>
+{{#each model.respuestas as |respuesta index|}}
+  <p class=" ">Respuesta {{add index 1}} </p>
+  {{input type="text" value=respuesta.contenido class="box span5"}}
+  <br>
+{{/each}}
+<button type="button" class="btn btn-light" {{action 'addRespuesta' model}}>Agregar Respuesta</button>
