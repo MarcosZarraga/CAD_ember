@@ -40,17 +40,38 @@
 				<div class="btn-group pull-right" >
 					{{#link-to "alertas"}}
 						<a class="btn">
-							<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span> <span class="label label-important hidden-phone">1</span> <span class="label label-success hidden-phone"></span>
+							<i class="icon-warning-sign"></i><span class="hidden-phone hidden-tablet"> Alertas</span>
+							<span class="label label-important hidden-phone">
+								{{#if model}}
+									{{model.alertas.length}}
+								{{else}}
+									0
+								{{/if}}
+							</span> <span class="label label-success hidden-phone"></span>
 						</a>
 					{{/link-to}}
 					{{#link-to "encuestas"}}
 						<a class="btn">
-							<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span> <span class="label label-warning hidden-phone">4</span>
+							<i class="icon-tasks"></i><span class="hidden-phone hidden-tablet"> Encuestas</span>
+							<span class="label label-warning hidden-phone">
+								{{#if model}}
+									{{model.encuestas.length}}
+								{{else}}
+									0
+								{{/if}}
+							</span>
 						</a>
 					{{/link-to}}
 					{{#link-to "solicitudes"}}
 						<a class="btn">
-							<i class="icon-envelope"></i><span class="hidden-phone hidden-tablet"> Solicitudes</span> <span class="label label-success hidden-phone">2</span>
+							<i class="icon-envelope"></i><span class="hidden-phone hidden-tablet"> Solicitudes</span>
+							 <span class="label label-success hidden-phone">
+								 {{#if model}}
+									 {{model.solicitudes.length}}
+								 {{else}}
+									 0
+								 {{/if}}
+							 </span>
 						</a>
 					{{/link-to}}
 					<!-- start: User Dropdown -->
