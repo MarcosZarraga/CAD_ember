@@ -36,4 +36,48 @@ export default DS.Model.extend({
     solicitudes: DS.hasMany('request'),
 
     encuestas: DS.hasMany('poll'),
+
+    pagoMensual: DS.attr('number', {
+      defaultValue: 1000
+    }),
+
+    totalPagos: computed('pagos.@each.monto', function() {
+      let sumPagos = 0;
+      this.get('pagos').forEach((pago) => {
+        sumPagos += pago.get('monto');
+      });
+      return sumPagos;
+    }).meta({ serialize: true }),
+
+    totalGastos: computed('gastos.@each.monto', function() {
+      let sumGastos = 0;
+      this.get('gastos').forEach((gasto) => {
+        sumGastos += gasto.get('monto');
+      });
+      return sumGastos;
+    }).meta({ serialize: true }),
+
+    /*
+        pagosPendientes: computed('colonos.@each.currentPagos', 'pagoMensual', function(){
+          let pagosPendientes = 0;
+          this.get('colonos').forEach((colono)=>{
+            let acum = 0;
+            colono.get('currentPagos').forEach((pago)=>{
+              acum += pago.get('monto')
+            })
+            if (acum < this.get('pagoMensual')) {
+              pagosPendientes++;
+            }
+          })
+          return pagosPendientes;
+        }),
+    */
+    encuestasRespondidas: computed('encuestas.@each.respondidas', function() {
+      let sumRespuestas = 0;
+      this.get('encuestas').forEach((encuesta) => {
+        sumRespuestas += encuesta.get('respondidas');
+      });
+      return sumRespuestas;
+    }).meta({ serialize: true }),
+
 });

@@ -143,30 +143,40 @@
 
 				<div class="box-small span2">
 					<a data-rel="tooltip" title="15 Habitanes de pago pendiente." class="box-small-link" href="#">
-						<div >15</div>
+						<div>
+							{{sub model.colonos.length model.pagos.length}}
+							<!-- {{model.pagosPendientes}} -->
+						</div>
 					</a>
-					<div class="box-small-title">Pagos Pendietes</div>
+					<div class="box-small-title">Pagos Pendientes</div>
 					<!--span " class="notification red">+15%</span-->
 				</div>
 
 				<div class="box-small span2">
 					<a data-rel="tooltip" title="$29.875 Ingreso de Marzo." class="box-small-link" href="#">
-						<div >$519.879</div>
+						<div>
+							<!-- ${{model.saldoUnit}} -->
+							{{format-money model.totalPagos symbol=selectedCurrency format="%v %s"}}
+						</div>
 					</a>
-					<div class="box-small-title">Ingreso Total</div>
+					<div class="box-small-title">Ingresos Totales</div>
 					<!--span  class="notification green">+ $29.875</span-->
 				</div>
 
 				<div class="box-small span2">
 					<a data-rel="tooltip" title="1,296 gastos de Marzo." class="box-small-link" href="#">
-						<div >$11,976</div>
+						<div>
+							{{format-money model.totalGastos symbol=selectedCurrency format="%v %s"}}
+						</div>
 					</a>
 					<div class="box-small-title">Gastos Totales</div>
 					<!--span  class="notification yellow">+ 1,296</span-->
 				</div>
 					<div class="box-small span2">
 					<a data-rel="tooltip" title="10 Encuestas Respondidas." class="box-small-link" href="#">
-						<div >10</div>
+						<div>
+							{{model.encuestasRespondidas}}
+						</div>
 					</a>
 					<div class="box-small-title">Encuestas Respondidas</div>
 					<!--span  class="notification green">+ $29.875</span-->
@@ -174,7 +184,13 @@
 
 				<div class="box-small span2">
 					<a data-rel="tooltip" title="3 Nuevas Alertas" class="box-small-link" href="#">
-						<div >3</div>
+						<div >
+							{{#if model}}
+								{{model.alertas.length}}
+							{{else}}
+								0
+							{{/if}}
+						</div>
 					</a>
 					<div class="box-small-title">Alertas</div>
 					<!--span  class="notification green">+ $29.875</span-->

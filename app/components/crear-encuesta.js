@@ -55,15 +55,16 @@ export default Ember.Component.extend({
         this.get('settlerList').then((colonosList)=>{
           colonosList.forEach((colono)=>{
             encuesta.get('instancias').then((instanciasList)=>{
-              encuesta.get('preguntas').then((questionList)=>{
-                let qList = [];
-                questionList.forEach((theQuestion)=>{
-                  qList.pushObject(theQuestion)
-                })
+              // encuesta.get('preguntas').then((questionList)=>{
+              //   let qList = [];
+              //   questionList.forEach((theQuestion)=>{
+              //     qList.pushObject(theQuestion)
+              //   })
                 this.get('store').createRecord('survey', {
+                  encuestaBase: encuesta,
                   fechaCierre: this.get('deadlineEncuesta'),
                   colono: colono,
-                  preguntas: qList
+                  // preguntas: qList
                 }).save().then((record)=>{
                   instanciasList.pushObject(record)
                   colono.get('encuestas').then((ssurveyList)=>{
@@ -73,7 +74,7 @@ export default Ember.Component.extend({
                     })
                   })
                 })
-              })
+              // })
               instanciasList.save();
             })
           })
