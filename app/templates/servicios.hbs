@@ -151,11 +151,11 @@
 							<table class="table table-bordered table-striped table-condensed">
 									<thead>
 										<tr>
-												<th>Nombre</th>
+											<th>Nombre</th>
 											<th>Referencia</th>
 											<th>Telefono </th>
 											<th>Costo</th>
-
+											<th>Acciones</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -173,6 +173,11 @@
 												</td>
 												<td class="center">
 													${{servicio.costo}}.00 MXN
+												</td>
+												<td class="center">
+													<a class="btn btn-danger" {{action 'deleteServicio' servicio}}>
+														<i class="icon-trash icon-white"></i>
+													</a>
 												</td>
 											</tr>
 										{{!-- {{else}} --}}

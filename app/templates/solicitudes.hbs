@@ -141,9 +141,10 @@
 							<table class="table table-striped table-bordered bootstrap-datatable datatable">
 								<thead>
 									<tr>
-										<th>Titulo</th>
-										<th>Espacio Requerido</th>
 										<th>Nombre del colono</th>
+										<th>Status de colono</th>
+										<th>Título</th>
+										<th>Espacio requerido</th>
 										<th>Motivo</th>
 										<th>Fecha de requerimiento</th>
 										<th>Horario de ocupación</th>
@@ -154,9 +155,22 @@
 								<tbody>
 									{{#each model as |solicitud|}}
 									<tr>
+											<td>{{solicitud.colono.nombre}} {{solicitud.colono.apellidoPaterno}}</td>
+											<td class="center">
+												{{#if solicitud.colono.status.isFulfilled }}
+													 {{#if (eq solicitud.colono.status.content 'Atrasado')}}
+															<span class="label label-important">
+															{{ solicitud.colono.status.content}}
+															</span>
+													 {{else}}
+														 <span class="label label-success">
+														 {{ solicitud.colono.status.content}}
+														 </span>
+													 {{/if}}
+												{{/if}}
+											</td>
 											<td class="center">{{solicitud.titulo}}</td>
 											<td class="center">{{solicitud.espacio}}</td>
-											<td>{{solicitud.colono.nombre}} {{solicitud.colono.apellidoPaterno}}</td>
 											<td class="center">{{solicitud.descripcion}}</td>
 											<td class="center">{{moment-format solicitud.fecha 'DD/MM/YYYY' }}</td>
 											<td class="center">{{solicitud.tiempo}}</td>
@@ -171,7 +185,10 @@
 												<a class="btn btn-success" {{action 'aprobar' solicitud}}>
 													<i class="icon-ok icon-white"></i>
 												</a>
-												<a class="btn btn-danger" {{action 'rechazar' solicitud}}>
+												<a class="btn btn-warning" {{action 'rechazar' solicitud}}>
+													<i class="icon-remove icon-white"></i>
+												</a>
+												<a class="btn btn-danger" {{action 'eliminar' solicitud}}>
 													<i class="icon-trash icon-white"></i>
 												</a>
 											</td>

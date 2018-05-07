@@ -46,7 +46,7 @@ export default DS.Model.extend({
       this.get('pagos').forEach((pago) => {
         sumPagos += pago.get('monto');
       });
-      return sumPagos;
+      return (!isNaN(sumPagos))? sumPagos: 0;
     }).meta({ serialize: true }),
 
     totalGastos: computed('gastos.@each.monto', function() {
@@ -54,24 +54,19 @@ export default DS.Model.extend({
       this.get('gastos').forEach((gasto) => {
         sumGastos += gasto.get('monto');
       });
-      return sumGastos;
+      return (!isNaN(sumGastos))? sumGastos: 0;
     }).meta({ serialize: true }),
 
-    /*
-        pagosPendientes: computed('colonos.@each.currentPagos', 'pagoMensual', function(){
-          let pagosPendientes = 0;
-          this.get('colonos').forEach((colono)=>{
-            let acum = 0;
-            colono.get('currentPagos').forEach((pago)=>{
-              acum += pago.get('monto')
-            })
-            if (acum < this.get('pagoMensual')) {
-              pagosPendientes++;
-            }
-          })
-          return pagosPendientes;
-        }),
-    */
+    pagosPendientes: computed('colonos.@each.currentPagos', 'pagoMensual', function(){
+      let pagosPendientes = 0;
+      this.get('colonos').forEach((colono)=>{
+        if (colono.get('currentPagos') < this.get('pagoMensual')) {
+          pagosPendientes++;
+        }
+      })
+      return (!isNaN(pagosPendientes))? pagosPendientes: 0;
+    }),
+
     encuestasRespondidas: computed('encuestas.@each.respondidas', function() {
       let sumRespuestas = 0;
       this.get('encuestas').forEach((encuesta) => {

@@ -142,20 +142,19 @@
 			<div class="sortable row-fluid">
 
 				<div class="box-small span2">
-					<a data-rel="tooltip" title="15 Habitanes de pago pendiente." class="box-small-link" href="#">
+					<a data-rel="tooltip" title="{{model.pagosPendientes}} Habitanes de pago pendiente." class="box-small-link" href="#">
 						<div>
-							{{sub model.colonos.length model.pagos.length}}
-							<!-- {{model.pagosPendientes}} -->
+							<!-- {{sub model.colonos.length model.pagos.length}} -->
+							{{model.pagosPendientes}}
 						</div>
 					</a>
 					<div class="box-small-title">Pagos Pendientes</div>
-					<!--span " class="notification red">+15%</span-->
+					<!-- <span class="notification red">+15%</span> -->
 				</div>
 
 				<div class="box-small span2">
-					<a data-rel="tooltip" title="$29.875 Ingreso de Marzo." class="box-small-link" href="#">
+					<a data-rel="tooltip" title="{{format-money model.totalPagos symbol=selectedCurrency format="%v %s"}} ingreso de {{moment-format now 'MMM'}}." class="box-small-link" href="#">
 						<div>
-							<!-- ${{model.saldoUnit}} -->
 							{{format-money model.totalPagos symbol=selectedCurrency format="%v %s"}}
 						</div>
 					</a>
@@ -164,7 +163,7 @@
 				</div>
 
 				<div class="box-small span2">
-					<a data-rel="tooltip" title="1,296 gastos de Marzo." class="box-small-link" href="#">
+					<a data-rel="tooltip" title="{{format-money model.totalGastos symbol=selectedCurrency format="%v %s"}} gastos de {{moment-format now 'MMM'}}." class="box-small-link" href="#">
 						<div>
 							{{format-money model.totalGastos symbol=selectedCurrency format="%v %s"}}
 						</div>
@@ -173,7 +172,7 @@
 					<!--span  class="notification yellow">+ 1,296</span-->
 				</div>
 					<div class="box-small span2">
-					<a data-rel="tooltip" title="10 Encuestas Respondidas." class="box-small-link" href="#">
+					<a data-rel="tooltip" title="{{model.encuestasRespondidas}} Encuestas Respondidas." class="box-small-link" href="#">
 						<div>
 							{{model.encuestasRespondidas}}
 						</div>
@@ -183,7 +182,7 @@
 				</div>
 
 				<div class="box-small span2">
-					<a data-rel="tooltip" title="3 Nuevas Alertas" class="box-small-link" href="#">
+					<a data-rel="tooltip" title="{{model.alertas.length}} Nuevas Alertas" class="box-small-link" href="#">
 						<div >
 							{{#if model}}
 								{{model.alertas.length}}
@@ -237,42 +236,42 @@
 					<div class="box-content">
 						<ul class="dashboard-list">
 							<li>
-								<a href="pagos.html">
+								{{#link-to "pagos"}}
 									<i class="icon-arrow-up"></i>
-									<span class="green">5</span>
+									<span class="green">{{sub model.colonos.length model.pagosPendientes}}</span>
 									Pagos
-								</a>
+								{{/link-to}}
 							</li>
 						  <li>
-							<a href="pagos.html">
+							{{#link-to "pagos"}}
 							  <i class="icon-arrow-down"></i>
-							  <span class="red">15</span>
+							  <span class="red">{{model.pagosPendientes}}</span>
 							  Pagos atrasados
-							</a>
+							{{/link-to}}
 						  </li>
 						  <li>
 
 						  </li>
 						  <li>
-							<a href="encuestas.html">
+							{{#link-to "encuestas"}}
 							  <i class="icon-comment"></i>
-							  <span class="green">45</span>
+							  <span class="green">{{model.encuestasRespondidas}}</span>
 							  Encuestas respondidas
-							</a>
+							{{/link-to}}
 						  </li>
 						  <li>
-							<a href="calendar.html">
+							{{#link-to "solicitudes"}}
 							  <i class="icon-list"></i>
-							  <span class="green">4</span>
+							  <span class="green">{{model.solicitudes.length}}</span>
 							  Solicitudes
-							</a>
+							{{/link-to}}
 						  </li>
 						  <li>
-							<a href="alertas.html">
+							{{#link-to "alertas"}}
 							  <i class="icon-exclamation-sign"></i>
-							  <span class="red">2</span>
+							  <span class="red">{{model.alertas.length}}</span>
 							  Alertas
-							</a>
+							{{/link-to}}
 						  </li>
 
 

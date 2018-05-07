@@ -181,10 +181,19 @@
 												{{colono.email}}
 											</td>
 											<td class="center">
-												<span class="label label-important">{{colono.status}}</span>
+												{{#if colono.status.isFulfilled }}
+													 {{#if (eq colono.status.content 'Atrasado')}}
+														 	<span class="label label-important">
+		 													{{ colono.status.content}}
+		 													</span>
+													 {{else}}
+														 <span class="label label-success">
+														 {{ colono.status.content}}
+														 </span>
+													 {{/if}}
+												{{/if}}
 											</td>
 											<td class="center">
-
 												<a class="btn btn-info" {{action 'editColono' colono}}>
 													<i class="icon-edit icon-white"></i>
 												</a>

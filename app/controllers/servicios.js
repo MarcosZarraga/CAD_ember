@@ -30,6 +30,10 @@ export default Ember.Controller.extend({
 			}
 		},
 
+		deleteServicio(servicio){
+			servicio.destroyRecord()
+		},
+
 		signOut(){
 			this.get('currentUser.account').then((account)=>{
 				account.set('currentUnit', null)

@@ -40,58 +40,61 @@ export default Ember.Component.extend({
     addEncuesta(encuesta){
       all(
           encuesta.get('preguntas').map((pregunta) => {
-            all(
+            return all(
       				pregunta.get('respuestas').map((respuesta) => {
-      					respuesta.save();
+      					return respuesta.save();
       				})
       			).then(()=>{
-              pregunta.save();
+              return pregunta.save();
             })
           })
       ).then(()=>{
         encuesta.set('administrador', this.get('admin'));
 		 		encuesta.set('unidadHab', this.get('currentUnit'));
 		 		encuesta.set('fechaCierre', this.get('deadlineEncuesta'));
-        this.get('settlerList').then((colonosList)=>{
-          colonosList.forEach((colono)=>{
-            encuesta.get('instancias').then((instanciasList)=>{
-              // encuesta.get('preguntas').then((questionList)=>{
-              //   let qList = [];
-              //   questionList.forEach((theQuestion)=>{
-              //     qList.pushObject(theQuestion)
-              //   })
-                this.get('store').createRecord('survey', {
+        return this.get('settlerList').then((colonosList)=>{
+          return all(
+            colonosList.map((colono)=>{
+              return encuesta.get('instancias').then((instanciasList)=>{
+                return this.get('store').createRecord('survey', {
                   encuestaBase: encuesta,
-                  fechaCierre: this.get('deadlineEncuesta'),
                   colono: colono,
-                  // preguntas: qList
                 }).save().then((record)=>{
                   instanciasList.pushObject(record)
-                  colono.get('encuestas').then((ssurveyList)=>{
-                    ssurveyList.pushObject(record)
-                    ssurveyList.save().then(()=>{
-                      colono.save()
+                  return colono.get('encuestas').then((ssurveyList)=>{
+                    ssurveyList.pushObject(record);
+                    return ssurveyList.save().then(()=>{
+                      return colono.save();
                     })
                   })
+                }).then(()=>{
+                  return instanciasList.save();
                 })
-              // })
-              instanciasList.save();
+
+              })
             })
-          })
-          colonosList.save().then(()=>{
-            encuesta.save().then(()=>{
-              this.get('currentUnit.encuestas').then((encuestasList)=>{
-                encuestasList.pushObject(encuesta)
-                encuestasList.save().then(()=>{
-                  this.get('currentUnit').then((unit)=>{
-                    unit.save().then(()=>{
-                      this.sendAction('addEncuesta')
+          ).then(()=>{
+            return colonosList.save().then(()=>{
+              return encuesta.save().then(()=>{
+                return this.get('currentUnit.encuestas').then((encuestasList)=>{
+                  encuestasList.pushObject(encuesta);
+                  return encuestasList.save().then(()=>{
+                    return this.get('currentUnit').then((unit)=>{
+                      debugger
+                      return unit.save().then(()=>{
+
+                        return this.sendAction('addEncuesta');
+                      }).catch((error)=>{
+                        debugger
+                      })
                     })
                   })
                 })
               })
             })
+
           })
+
         })
       })
 		},

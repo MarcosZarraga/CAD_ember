@@ -27,6 +27,10 @@ export default Ember.Controller.extend({
     rechazar(solicitud){
       solicitud.set('aprobado', false);
       solicitud.save();
+    },
+
+    eliminar(solicitud){
+      solicitud.destroyRecord()
     }
 
   }

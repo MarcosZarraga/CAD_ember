@@ -143,6 +143,7 @@
 									  <th>Fecha de registro de la alerta</th>
 									  <th>Motivo</th>
 									  <th>Descripción</th>
+										<th>Acciones</th>
 								  </tr>
 							  </thead>
 							  <tbody>
@@ -152,6 +153,11 @@
 											<td class="center">{{moment-format alerta.fecha 'DD/MM/YYYY	HH:mm' }}</td>
 											<td class="center">{{alerta.titulo}}</td>
 											<td>{{alerta.descripcion}}</td>
+											<td class="center">
+												<a class="btn btn-danger" {{action 'deleteAlerta' alerta}}>
+													<i class="icon-trash icon-white"></i>
+												</a>
+											</td>
 										</tr>
 										{{/each}}
 
