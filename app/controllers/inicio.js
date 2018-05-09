@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
     currentUser: service(),
 
     actions: {
+      // Cerrar sesión
         signOut(){
           this.get('currentUser.account').then((account)=>{
             account.set('currentUnit', null)

@@ -6,6 +6,7 @@ export default Ember.Route.extend({
     session: service(),
     currentUser: service(),
 
+    // Ir a iniciar sesión si la sesión no está iniciada
     beforeModel(){
       this.get('currentUser.account').then((account)=>{
         // console.log(account)
@@ -20,6 +21,7 @@ export default Ember.Route.extend({
       })
     },
 
+    // El modelo de esta vista es la lista de alertas de la unidad
     model() {
       return this.get('currentUser.account').then((account)=>{
         return this.get('store').findRecord('unit', account.get('currentUnit')).then((theUnit)=>{

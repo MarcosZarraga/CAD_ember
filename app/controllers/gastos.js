@@ -6,10 +6,12 @@ export default Ember.Controller.extend({
   currentUser: service(),
   store: service(),
 
+  // Creando gasto
   addNewGasto: computed('newGasto', function(){
     return this.get('newGasto')
   }),
 
+  // Obteniendo unidad de acuerdo al administrador
   currentUnit: computed('store', 'currentUser', function(){
 		return DS.PromiseObject.create({
 			promise: this.get('currentUser.account').then((account)=>{
@@ -21,6 +23,7 @@ export default Ember.Controller.extend({
 		});
 	}),
 
+  // Obteniendo al administrador actual
   currentAdmin: computed('store', 'currentUser', function(){
     return DS.PromiseObject.create({
       promise: this.get('currentUser.account').then((account)=>{
@@ -30,6 +33,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    // Cambio de pantalla
 		addGasto(){
 			if(this.get('addNewGasto')) {
 				this.set('addNewGasto', false)
@@ -38,6 +42,7 @@ export default Ember.Controller.extend({
 			}
 		},
 
+    // Cerrar sesión
 		signOut(){
 			this.get('currentUser.account').then((account)=>{
 				account.set('currentUnit', null)

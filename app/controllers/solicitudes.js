@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   currentUser: service(),
   store: service(),
 
+  // Obteniendo la unidad actual con respecto al administrador
   currentUnit: computed('store', 'currentUser', function(){
     return DS.PromiseObject.create({
       promise: this.get('currentUser.account').then((account)=>{
@@ -19,16 +20,19 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    // Aprobar solicitud
     aprobar(solicitud){
       solicitud.set('aprobado', true);
       solicitud.save();
     },
 
+    // Rechazar solicitud
     rechazar(solicitud){
       solicitud.set('aprobado', false);
       solicitud.save();
     },
 
+    // Eliminar solicitud
     eliminar(solicitud){
       solicitud.destroyRecord()
     }

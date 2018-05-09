@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+// Elemento que permite la interacción de jQuery con Ember
 export default Ember.Component.extend({
     tagName: 'span',
     query: 'a',
@@ -15,4 +15,3 @@ export default Ember.Component.extend({
       window.Materialize.updateTextFields();
     }
   });
-

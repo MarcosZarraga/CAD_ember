@@ -33,6 +33,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    // Base de Datos de Firebase
     ENV.firebase = {
       apiKey: "AIzaSyCImjD67U5oAmEI_aqeTRjVOuNzGr50ZxI",
     authDomain: "guha-dev.firebaseapp.com",

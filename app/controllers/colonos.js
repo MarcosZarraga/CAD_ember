@@ -9,10 +9,12 @@ export default Ember.Controller.extend({
   newColono: false,
   edtColono: null,
 
+  // Permite desplegar pantalla de agregar colono
 	addNewColono: computed('newColono', function(){
 		return this.get('newColono')
 	}),
 
+  // Obteniendo unidad actual con respecto al colono
 	currentUnit: computed('store', 'currentUser', function(){
 		return DS.PromiseObject.create({
 			promise: this.get('currentUser.account').then((account)=>{
@@ -37,15 +39,18 @@ export default Ember.Controller.extend({
       }
     },
 
+    // Cambio de pantalla a edición
 		editColono(colono) {
       this.send('addColono')
       this.set('edtColono', colono)
 		},
 
+    // Eliminando colono
 		deleteColono(colono){
 			colono.destroyRecord()
 		},
 
+    // Cerrando sesión
 		signOut(){
 			this.get('currentUser.account').then((account)=>{
 				account.set('currentUnit', null)

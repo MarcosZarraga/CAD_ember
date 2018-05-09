@@ -6,10 +6,12 @@ export default Ember.Controller.extend({
 	currentUser: service(),
 	store: service(),
 
+	// Creando nuevo pago
 	addNewPago: computed('newPago', function(){
 		return this.get('newPago')
 	}),
 
+	// Obteniendo unidad actual
 	currentUnit: computed('store', 'currentUser', function(){
 		return DS.PromiseObject.create({
 			promise: this.get('currentUser.account').then((account)=>{
@@ -22,6 +24,7 @@ export default Ember.Controller.extend({
 	}),
 
 	actions: {
+		// Cambio de pantalla a agregar pago
 		addPago(){
 			if(this.get('addNewPago')) {
 				this.set('addNewPago', false)
@@ -30,6 +33,7 @@ export default Ember.Controller.extend({
 			}
 		},
 
+		// Cerrar Sesión
 		signOut(){
 			this.get('currentUser.account').then((account)=>{
 				account.set('currentUnit', null)

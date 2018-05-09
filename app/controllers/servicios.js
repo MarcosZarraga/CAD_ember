@@ -6,10 +6,12 @@ export default Ember.Controller.extend({
 	currentUser: service(),
   store: service(),
 
+	// Creando servicio
 	addNewServicio: computed('newServicio', function(){
 		return this.get('newServicio')
 	}),
 
+	// Obteniendo unidad de acuerdo con el administrador actual
 	currentUnit: computed('store', 'currentUser', function(){
 		return DS.PromiseObject.create({
 			promise: this.get('currentUser.account').then((account)=>{
@@ -22,6 +24,7 @@ export default Ember.Controller.extend({
 	}),
 
 	actions: {
+		// Cambio de pantalla a agregar servicio
 		addServicio(){
 			if(this.get('addNewServicio')) {
 				this.set('addNewServicio', false)
@@ -30,10 +33,12 @@ export default Ember.Controller.extend({
 			}
 		},
 
+		// Borrar servicio
 		deleteServicio(servicio){
 			servicio.destroyRecord()
 		},
 
+		// Cerrar sesión
 		signOut(){
 			this.get('currentUser.account').then((account)=>{
 				account.set('currentUnit', null)

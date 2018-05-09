@@ -9,12 +9,15 @@ export default Ember.Controller.extend(FindQuery, {
 	session: service(),
 	firebase: service('firebaseApp'),
 
+	// Lista de unidades
 	unidades: computed(function(){
 		return this.store.findAll('unit');
 	}),
 
 	actions: {
+		// Función para iniciar sesión
 		iniciarSesion(){
+			// Validación de datps
 			let email = this.get('email');
 			if(isBlank(this.get('email'))){
 				//window.Materialize.toast('Introduce tu correo electrónico', 2000);
@@ -32,6 +35,7 @@ export default Ember.Controller.extend(FindQuery, {
 				return;
 			}
 
+			// Iniciando sesión de firebase
 			this.get('session').open('firebase', {
 				provider: 'password',
 				email: email,
@@ -132,6 +136,7 @@ export default Ember.Controller.extend(FindQuery, {
 			})
 		},
 
+// Función de prueba. Borrar o ignorar
 		createXUser() {
 			let email = "alex_unit7@guha.mx";
 			let password = "123123";
@@ -153,6 +158,7 @@ export default Ember.Controller.extend(FindQuery, {
 			})
 		},
 
+// Cerrar sesión
 		signOut(){
 			this.get('session').close();
 			console.log('Sesion cerrada');

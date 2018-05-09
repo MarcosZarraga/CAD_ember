@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   currentUser: service(),
   store: service(),
 
+  // Obteniendo la unidad a partir del administrador
   currentUnit: computed('store', 'currentUser', function(){
     return DS.PromiseObject.create({
       promise: this.get('currentUser.account').then((account)=>{
@@ -19,10 +20,12 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    // Eliminando alerta
     deleteAlerta(alerta){
       alerta.destroyRecord()
     },
 
+    // Cerrar sesión
     signOut(){
       this.get('currentUser.account').then((account)=>{
         account.set('currentUnit', null)

@@ -9,10 +9,12 @@ export default Ember.Component.extend({
   session: service(),
 	firebase: service('firebaseApp'),
 
+  // Creando encuesta
 	newEncuesta: computed('store', function(){
 		return this.get('store').createRecord('poll')
 	}),
 
+  // Estableciendo la fecha de cierre
   deadlineEncuesta: computed('fechaCierre', function(){
     if (!isBlank(this.get('fechaCierre'))){
       let dead = moment(this.get('fechaCierre')).endOf('day').utc();
@@ -22,6 +24,7 @@ export default Ember.Component.extend({
     }
   }),
 
+  // Lista de colonos de la unidad
   settlerList: computed('store', 'currentUnit', function(){
 		return DS.PromiseObject.create({
 			promise: this.get('currentUnit').then((currentUnit)=>{
@@ -33,11 +36,14 @@ export default Ember.Component.extend({
 	}),
 
   actions: {
+    // Agregando pregunta a la encuesta
     addPregunta(encuesta){
       encuesta.get('preguntas').createRecord()
     },
 
+    // Funcion que guarda encuesta
     addEncuesta(encuesta){
+      // Guardando preguntas y respuestas de la encuesta
       all(
           encuesta.get('preguntas').map((pregunta) => {
             return all(
@@ -49,10 +55,12 @@ export default Ember.Component.extend({
             })
           })
       ).then(()=>{
+        // Rellenando datos de la encuesta
         encuesta.set('administrador', this.get('admin'));
 		 		encuesta.set('unidadHab', this.get('currentUnit'));
 		 		encuesta.set('fechaCierre', this.get('deadlineEncuesta'));
         return this.get('settlerList').then((colonosList)=>{
+          // Creando encuesta por cada colono
           return all(
             colonosList.map((colono)=>{
               return encuesta.get('instancias').then((instanciasList)=>{
@@ -74,6 +82,7 @@ export default Ember.Component.extend({
               })
             })
           ).then(()=>{
+            // Guardando encuesta en la lista de la unidad
             return colonosList.save().then(()=>{
               return encuesta.save().then(()=>{
                 return this.get('currentUnit.encuestas').then((encuestasList)=>{
@@ -82,7 +91,7 @@ export default Ember.Component.extend({
                     return this.get('currentUnit').then((unit)=>{
                       debugger
                       return unit.save().then(()=>{
-
+                        // Cambio de pantalla
                         return this.sendAction('addEncuesta');
                       }).catch((error)=>{
                         debugger

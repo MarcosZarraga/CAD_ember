@@ -8,10 +8,12 @@ export default Ember.Controller.extend({
   store: service(),
   viewingEncuesta: null,
 
+  // Cambio de pantalla
   addNewEncuesta: computed('newEncuesta', function(){
     return this.get('newEncuesta')
   }),
 
+  // Obteniendo unidad con respecto del administrador
   currentUnit: computed('store', 'currentUser', function(){
     return DS.PromiseObject.create({
       promise: this.get('currentUser.account').then((account)=>{
@@ -23,6 +25,7 @@ export default Ember.Controller.extend({
     });
   }),
 
+  // Obteniendo administrador actual
   currentAdmin: computed('store', 'currentUser', function(){
     return DS.PromiseObject.create({
       promise: this.get('currentUser.account').then((account)=>{
@@ -32,6 +35,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    // Cambio de pantalla
     addEncuesta(){
       if(!isBlank(this.get('viewingEncuesta'))){
           this.set('viewingEncuesta', null)
@@ -44,11 +48,13 @@ export default Ember.Controller.extend({
 			}
 		},
 
+    // Desplegando pantalla de visualización de encuesta
     viewEncuesta(encuesta) {
       this.send('addEncuesta')
       this.set('viewingEncuesta', encuesta)
     },
 
+    // Cerrando Sesión
 		signOut(){
 			this.get('currentUser.account').then((account)=>{
 				account.set('currentUnit', null)

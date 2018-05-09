@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   currentUser: service(),
   store: service(),
 
+  // Obteniendo unidad actual
   currentUnit: computed('store', 'currentUser', function(){
     return DS.PromiseObject.create({
       promise: this.get('currentUser.account').then((account)=>{
@@ -19,6 +20,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    // Cerrar sesión
 		signOut(){
 			this.get('currentUser.account').then((account)=>{
 				account.set('currentUnit', null)

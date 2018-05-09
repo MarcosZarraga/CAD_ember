@@ -6,6 +6,7 @@ export default Ember.Component.extend({
 	session: service(),
 	firebase: service('firebaseApp'),
 
+	// Guardando colono
 	actions : {
 		addColono(colono){
 				colono.set('fechaRegistro', moment().format())
@@ -14,6 +15,7 @@ export default Ember.Component.extend({
         })
 		},
 
+		// Cancelando la edicion de colono
 		cancel(){
 			this.sendAction('addColono')
 		}
